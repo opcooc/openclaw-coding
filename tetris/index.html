@@ -8,26 +8,26 @@
 </head>
 <body>
     <div class="game-container">
-        <div class="stats">
-            <h1>俄罗斯方块</h1>
-            <div class="score-board">分数: <span id="score">0</span></div>
-            <div class="level-board">等级: <span id="level">1</span></div>
-            <div class="next-piece">
-                <p>下一个:</p>
+        <!-- 游戏主画布 -->
+        <canvas id="tetris" width="240" height="400"></canvas>
+        
+        <div class="side-panel">
+            <div class="stat-box">
+                <h2>得分</h2>
+                <div id="score">0</div>
+            </div>
+            <div class="stat-box">
+                <h2>下一个</h2>
                 <canvas id="next" width="80" height="80"></canvas>
             </div>
             <div class="controls-hint">
-                <p>操作说明:</p>
-                <ul>
-                    <li>← → : 左右移动</li>
-                    <li>↓ : 加速下落</li>
-                    <li>↑ : 旋转</li>
-                    <li>Space : 直接落地</li>
-                </ul>
+                <p>← → : 移动</p>
+                <p>↑ : 旋转</p>
+                <p>↓ : 加速下落</p>
+                <p>空格 : 直接落地</p>
             </div>
             <button id="start-btn">开始游戏</button>
         </div>
-        <canvas id="tetris" width="240" height="400"></canvas>
     </div>
     <script src="game.js"></script>
 </body>
