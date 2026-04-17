@@ -3,198 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>下属考核表 - 华规绩效考评系统</title>
+    <title>下属考核 - 华规绩效考评系统</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-gray-50 min-h-screen">
     <div class="flex h-screen">
-        <!-- 侧边栏 -->
         <aside class="w-64 bg-blue-700 text-white flex-shrink-0">
-    <div class="p-4 mx-3 mb-2 mt-4"><img src="../images/huagui-logo.png?v=20260417" alt="华规软件" class="w-full h-auto"></div>
-    <nav class="mt-2">
-        <a href="02-workbench.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-home w-6"></i><span>工作台</span></a>
-        <a href="03-task-submission.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-edit w-6"></i><span>任务填报</span></a>
-        <a href="05-score-query.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-chart-line w-6"></i><span>成绩查询</span></a>
-        
-        <a href="07-report-analysis.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-file-alt w-6"></i><span>报表中心</span></a>
-        <a href="08-subordinate-evaluation.html" class="flex items-center px-6 py-3 bg-blue-600 border-l-4 border-white"><i class="fas fa-users w-6"></i><span>下属考核</span></a><a href="06-admin-config.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-cog w-6"></i><span>系统配置</span></a><a href="09-user-management.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-user-cog w-6"></i><span>用户管理</span></a><a href="11-org-structure.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-sitemap w-6"></i><span>组织关系</span></a>
-    </nav>
-</aside>
-
-        <!-- 主内容区 -->
+            <div class="p-4 mx-3 mb-2 mt-4"><img src="../images/huagui-logo.png?v=20260417" alt="华规软件" class="w-full h-auto"></div>
+            <nav class="mt-2">
+                <a href="02-workbench.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-home w-6"></i><span>工作台</span></a>
+                <a href="03-task-submission.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-edit w-6"></i><span>任务填报</span></a>
+                <a href="08-subordinate-evaluation.html" class="flex items-center px-6 py-3 bg-blue-600 border-l-4 border-white"><i class="fas fa-users w-6"></i><span>下属考核</span></a>
+                <a href="07-report-analysis.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-file-alt w-6"></i><span>报表中心</span></a>
+                <a href="06-admin-config.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-cog w-6"></i><span>系统配置</span></a>
+                <a href="09-user-management.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-user-cog w-6"></i><span>用户管理</span></a>
+                <a href="11-org-structure.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-sitemap w-6"></i><span>组织关系</span></a>
+            </nav>
+        </aside>
         <div class="flex-1 flex flex-col overflow-hidden">
-            <!-- 顶部导航 -->
             <header class="bg-white shadow-sm border-b px-6 py-4">
                 <div class="flex justify-between items-center">
-                    <h2 class="text-2xl font-semibold text-gray-800">下属考核表</h2>
+                    <h2 class="text-2xl font-semibold text-gray-800">下属考核</h2>
                     <div class="flex items-center space-x-4">
                         <span class="text-gray-600">考评人：张三（技术主管）</span>
                         <a href="01-login.html" class="text-gray-500 hover:text-red-600"><i class="fas fa-sign-out-alt"></i><span class="ml-1">退出</span></a>
                     </div>
                 </div>
             </header>
-
-            <!-- 内容区 -->
             <main class="flex-1 overflow-y-auto p-6">
                 <div class="max-w-6xl mx-auto">
-                    <!-- 被考评人信息 -->
-                    <div class="bg-white rounded-lg shadow p-6 mb-6">
-                        <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-                            <i class="fas fa-user-circle text-blue-600 mr-2"></i>被考评人信息
-                        </h3>
-                        <div class="grid grid-cols-4 gap-4">
-                            <div><label class="block text-sm text-gray-500 mb-1">姓名</label><p class="font-medium">李晓明</p></div>
-                            <div><label class="block text-sm text-gray-500 mb-1">岗位</label><p class="font-medium">高级软件工程师</p></div>
-                            <div><label class="block text-sm text-gray-500 mb-1">部门</label><p class="font-medium">研发中心</p></div>
-                            <div><label class="block text-sm text-gray-500 mb-1">考核周期</label><p class="font-medium">2026 年第一季度</p></div>
+                    <!-- Tab 切换 -->
+                    <div class="bg-white rounded-lg shadow mb-6">
+                        <div class="border-b">
+                            <nav class="flex space-x-4 px-4">
+                                <button class="px-4 py-3 border-b-2 border-blue-500 text-blue-600 font-medium" onclick="switchTab('audit')">
+                                    <i class="fas fa-clipboard-check mr-2"></i>任务审核
+                                </button>
+                                <button class="px-4 py-3 border-b-2 border-transparent text-gray-500 hover:text-gray-700" onclick="switchTab('evaluate')">
+                                    <i class="fas fa-star mr-2"></i>考核打分
+                                </button>
+                            </nav>
                         </div>
                     </div>
 
-                    <!-- 关键任务考核（60 分） -->
-                    <div class="bg-white rounded-lg shadow p-6 mb-6">
-                        <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-                            <i class="fas fa-clipboard-check text-green-600 mr-2"></i>关键任务考核（60 分）
-                        </h3>
-                        <table class="w-full">
-                            <thead class="bg-gray-50">
-                                <tr>
-                                    <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">序号</th>
-                                    <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">任务内容</th>
-                                    <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">权重</th>
-                                    <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">主管领导评分</th>
-                                    <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">项目经理评分</th>
-                                    <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">最终得分</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="border-b">
-                                    <td class="py-3 px-4 text-gray-600">1</td>
-                                    <td class="py-3 px-4 text-gray-800">完成核心模块重构，提升系统性能 30%</td>
-                                    <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">20%</span></td>
-                                    <td class="text-center py-3 px-4"><input type="number" class="supervisor-score w-20 text-center border rounded px-2 py-1" data-weight="0.2" data-r1="0.6" min="0" max="12" step="0.5" value="0" oninput="calculateRow(this)"></td>
-                                    <td class="text-center py-3 px-4"><input type="number" class="manager-score w-20 text-center border rounded px-2 py-1" data-weight="0.2" data-r2="0.4" min="0" max="12" step="0.5" value="0" oninput="calculateRow(this)"></td>
-                                    <td class="text-center py-3 px-4 font-bold text-blue-600 row-total">0.0</td>
-                                </tr>
-                                <tr class="border-b">
-                                    <td class="py-3 px-4 text-gray-600">2</td>
-                                    <td class="py-3 px-4 text-gray-800">主导技术方案设计，完成 3 次技术分享</td>
-                                    <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">20%</span></td>
-                                    <td class="text-center py-3 px-4"><input type="number" class="supervisor-score w-20 text-center border rounded px-2 py-1" data-weight="0.2" data-r1="0.6" min="0" max="12" step="0.5" value="0" oninput="calculateRow(this)"></td>
-                                    <td class="text-center py-3 px-4"><input type="number" class="manager-score w-20 text-center border rounded px-2 py-1" data-weight="0.2" data-r2="0.4" min="0" max="12" step="0.5" value="0" oninput="calculateRow(this)"></td>
-                                    <td class="text-center py-3 px-4 font-bold text-blue-600 row-total">0.0</td>
-                                </tr>
-                                <tr class="border-b">
-                                    <td class="py-3 px-4 text-gray-600">3</td>
-                                    <td class="py-3 px-4 text-gray-800">按时交付项目，无重大延期</td>
-                                    <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">20%</span></td>
-                                    <td class="text-center py-3 px-4"><input type="number" class="supervisor-score w-20 text-center border rounded px-2 py-1" data-weight="0.2" data-r1="0.6" min="0" max="12" step="0.5" value="0" oninput="calculateRow(this)"></td>
-                                    <td class="text-center py-3 px-4"><input type="number" class="manager-score w-20 text-center border rounded px-2 py-1" data-weight="0.2" data-r2="0.4" min="0" max="12" step="0.5" value="0" oninput="calculateRow(this)"></td>
-                                    <td class="text-center py-3 px-4 font-bold text-blue-600 row-total">0.0</td>
-                                </tr>
-                                <tr class="border-b">
-                                    <td class="py-3 px-4 text-gray-600">4</td>
-                                    <td class="py-3 px-4 text-gray-800">代码质量优良，Bug 率低于团队平均</td>
-                                    <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">15%</span></td>
-                                    <td class="text-center py-3 px-4"><input type="number" class="supervisor-score w-20 text-center border rounded px-2 py-1" data-weight="0.15" data-r1="0.6" min="0" max="9" step="0.5" value="0" oninput="calculateRow(this)"></td>
-                                    <td class="text-center py-3 px-4"><input type="number" class="manager-score w-20 text-center border rounded px-2 py-1" data-weight="0.15" data-r2="0.4" min="0" max="9" step="0.5" value="0" oninput="calculateRow(this)"></td>
-                                    <td class="text-center py-3 px-4 font-bold text-blue-600 row-total">0.0</td>
-                                </tr>
-                                <tr>
-                                    <td class="py-3 px-4 text-gray-600">5</td>
-                                    <td class="py-3 px-4 text-gray-800">协助团队成员解决问题，促进团队协作</td>
-                                    <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">15%</span></td>
-                                    <td class="text-center py-3 px-4"><input type="number" class="supervisor-score w-20 text-center border rounded px-2 py-1" data-weight="0.15" data-r1="0.6" min="0" max="9" step="0.5" value="0" oninput="calculateRow(this)"></td>
-                                    <td class="text-center py-3 px-4"><input type="number" class="manager-score w-20 text-center border rounded px-2 py-1" data-weight="0.15" data-r2="0.4" min="0" max="9" step="0.5" value="0" oninput="calculateRow(this)"></td>
-                                    <td class="text-center py-3 px-4 font-bold text-blue-600 row-total">0.0</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="mt-4 p-3 bg-blue-50 rounded text-sm text-gray-600">
-                            <i class="fas fa-info-circle text-blue-600 mr-2"></i>
-                            评分说明：主管领导评分权重 60%，项目经理评分权重 40%，系统自动计算加权得分
+                    <!-- 任务审核 Tab -->
+                    <div id="auditTab" class="space-y-6">
+                        <div class="bg-white rounded-lg shadow p-6">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4">待审核任务（2026 年 3 月）</h3>
+                            <table class="w-full">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">被考核人</th>
+                                        <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">任务内容</th>
+                                        <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">交付成果</th>
+                                        <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">提交时间</th>
+                                        <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">状态</th>
+                                        <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b">
+                                        <td class="py-3 px-4 font-medium">李晓明</td>
+                                        <td class="py-3 px-4 text-gray-800">完成核心模块重构，提升系统性能 30%</td>
+                                        <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">代码 + 文档</span></td>
+                                        <td class="text-center py-3 px-4 text-gray-600">2026-03-28</td>
+                                        <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded text-sm">待审核</span></td>
+                                        <td class="text-center py-3 px-4">
+                                            <button class="bg-green-600 text-white px-4 py-1.5 rounded text-sm hover:bg-green-700 mr-2" onclick="auditTask(this, 'approved')">通过</button>
+                                            <button class="bg-red-600 text-white px-4 py-1.5 rounded text-sm hover:bg-red-700" onclick="auditTask(this, 'rejected')">驳回</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="py-3 px-4 font-medium">李晓明</td>
+                                        <td class="py-3 px-4 text-gray-800">主导技术方案设计，完成 3 次技术分享</td>
+                                        <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">PPT+ 录像</span></td>
+                                        <td class="text-center py-3 px-4 text-gray-600">2026-03-29</td>
+                                        <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded text-sm">待审核</span></td>
+                                        <td class="text-center py-3 px-4">
+                                            <button class="bg-green-600 text-white px-4 py-1.5 rounded text-sm hover:bg-green-700 mr-2" onclick="auditTask(this, 'approved')">通过</button>
+                                            <button class="bg-red-600 text-white px-4 py-1.5 rounded text-sm hover:bg-red-700" onclick="auditTask(this, 'rejected')">驳回</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="py-3 px-4 font-medium">王芳</td>
+                                        <td class="py-3 px-4 text-gray-800">完成 UI 组件库升级，支持主题切换</td>
+                                        <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">代码 + 演示</span></td>
+                                        <td class="text-center py-3 px-4 text-gray-600">2026-03-30</td>
+                                        <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded text-sm">待审核</span></td>
+                                        <td class="text-center py-3 px-4">
+                                            <button class="bg-green-600 text-white px-4 py-1.5 rounded text-sm hover:bg-green-700 mr-2" onclick="auditTask(this, 'approved')">通过</button>
+                                            <button class="bg-red-600 text-white px-4 py-1.5 rounded text-sm hover:bg-red-700" onclick="auditTask(this, 'rejected')">驳回</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 
-                    <!-- 能力态度考核（20 分） -->
-                    <div class="bg-white rounded-lg shadow p-6 mb-6">
-                        <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-                            <i class="fas fa-user-check text-purple-600 mr-2"></i>能力态度考核（20 分）
-                        </h3>
-                        <table class="w-full">
-                            <thead class="bg-gray-50">
-                                <tr>
-                                    <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">序号</th>
-                                    <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">评估指标</th>
-                                    <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">说明</th>
-                                    <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">权重</th>
-                                    <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">评分</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="border-b">
-                                    <td class="py-3 px-4 text-gray-600">1</td>
-                                    <td class="py-3 px-4 text-gray-800">专业能力</td>
-                                    <td class="py-3 px-4 text-gray-500 text-sm">技术深度、解决问题能力</td>
-                                    <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-sm">25%</span></td>
-                                    <td class="text-center py-3 px-4"><input type="number" class="capability-score w-20 text-center border rounded px-2 py-1" min="0" max="5" step="0.5" value="0" oninput="calculateTotal()"></td>
-                                </tr>
-                                <tr class="border-b">
-                                    <td class="py-3 px-4 text-gray-600">2</td>
-                                    <td class="py-3 px-4 text-gray-800">工作态度</td>
-                                    <td class="py-3 px-4 text-gray-500 text-sm">责任心、主动性、积极性</td>
-                                    <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-sm">25%</span></td>
-                                    <td class="text-center py-3 px-4"><input type="number" class="capability-score w-20 text-center border rounded px-2 py-1" min="0" max="5" step="0.5" value="0" oninput="calculateTotal()"></td>
-                                </tr>
-                                <tr class="border-b">
-                                    <td class="py-3 px-4 text-gray-600">3</td>
-                                    <td class="py-3 px-4 text-gray-800">团队协作</td>
-                                    <td class="py-3 px-4 text-gray-500 text-sm">沟通能力、配合度、分享精神</td>
-                                    <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-sm">25%</span></td>
-                                    <td class="text-center py-3 px-4"><input type="number" class="capability-score w-20 text-center border rounded px-2 py-1" min="0" max="5" step="0.5" value="0" oninput="calculateTotal()"></td>
-                                </tr>
-                                <tr>
-                                    <td class="py-3 px-4 text-gray-600">4</td>
-                                    <td class="py-3 px-4 text-gray-800">学习成长</td>
-                                    <td class="py-3 px-4 text-gray-500 text-sm">学习能力、自我提升、创新思维</td>
-                                    <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-sm">25%</span></td>
-                                    <td class="text-center py-3 px-4"><input type="number" class="capability-score w-20 text-center border rounded px-2 py-1" min="0" max="5" step="0.5" value="0" oninput="calculateTotal()"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <!-- 经营指标（20 分） -->
-                    <div class="bg-white rounded-lg shadow p-6 mb-6">
-                        <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-                            <i class="fas fa-chart-line text-orange-600 mr-2"></i>经营指标（20 分）
-                        </h3>
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <p class="text-gray-600">系统自动计算（累计实际/累计计划 × 分值）</p>
-                                <p class="text-sm text-gray-500 mt-1">目标完成率：<span class="font-medium text-green-600">95%</span></p>
+                    <!-- 考核打分 Tab -->
+                    <div id="evaluateTab" class="hidden space-y-6">
+                        <div class="bg-white rounded-lg shadow p-6 mb-6">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4">被考评人：李晓明（高级软件工程师）</h3>
+                            
+                            <!-- 关键任务考核（60 分）- 仅主管领导评分 -->
+                            <div class="mb-6">
+                                <h4 class="text-md font-semibold text-gray-800 mb-3 flex items-center">
+                                    <i class="fas fa-clipboard-check text-green-600 mr-2"></i>关键任务考核（60 分）- 主管领导评分
+                                </h4>
+                                <table class="w-full">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">序号</th>
+                                            <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">任务内容</th>
+                                            <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">权重</th>
+                                            <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">主管评分</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b">
+                                            <td class="py-3 px-4 text-gray-600">1</td>
+                                            <td class="py-3 px-4 text-gray-800">完成核心模块重构，提升系统性能 30%</td>
+                                            <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">20%</span></td>
+                                            <td class="text-center py-3 px-4"><input type="number" class="task-score w-20 text-center border rounded px-2 py-1" min="0" max="12" step="0.5" value="0" oninput="calculateTotal()"></td>
+                                        </tr>
+                                        <tr class="border-b">
+                                            <td class="py-3 px-4 text-gray-600">2</td>
+                                            <td class="py-3 px-4 text-gray-800">主导技术方案设计，完成 3 次技术分享</td>
+                                            <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">20%</span></td>
+                                            <td class="text-center py-3 px-4"><input type="number" class="task-score w-20 text-center border rounded px-2 py-1" min="0" max="12" step="0.5" value="0" oninput="calculateTotal()"></td>
+                                        </tr>
+                                        <tr class="border-b">
+                                            <td class="py-3 px-4 text-gray-600">3</td>
+                                            <td class="py-3 px-4 text-gray-800">按时交付项目，无重大延期</td>
+                                            <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">20%</span></td>
+                                            <td class="text-center py-3 px-4"><input type="number" class="task-score w-20 text-center border rounded px-2 py-1" min="0" max="12" step="0.5" value="0" oninput="calculateTotal()"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                            <div class="text-right">
-                                <label class="block text-sm text-gray-500 mb-1">得分</label>
-                                <input type="number" id="businessScore" class="w-24 text-center border rounded px-3 py-2 font-semibold bg-gray-100" value="19.0" readonly>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- 总分汇总 -->
-                    <div class="bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg shadow-lg p-6 text-white">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <p class="text-blue-100">总分汇总</p>
-                                <div class="flex items-baseline space-x-4 mt-2">
-                                    <p class="text-4xl font-bold"><span id="totalScore">0.0</span> 分</p>
-                                    <p class="text-lg text-blue-100">等级：<span id="gradeLevel" class="font-bold">-</span></p>
+                            <!-- 能力态度考核（20 分）- 双考评人评分 -->
+                            <div class="mb-6">
+                                <h4 class="text-md font-semibold text-gray-800 mb-3 flex items-center">
+                                    <i class="fas fa-user-check text-purple-600 mr-2"></i>能力态度考核（20 分）- 双考评人评分
+                                </h4>
+                                <div class="mb-3 p-3 bg-purple-50 rounded text-sm text-gray-600">
+                                    <i class="fas fa-info-circle text-purple-600 mr-2"></i>
+                                    主管领导评分权重 50%，项目经理评分权重 50%
                                 </div>
-                                <p class="text-sm text-blue-100 mt-2">关键任务：<span id="taskTotal">0.0</span> + 能力态度：<span id="capabilityTotal">0.0</span> + 经营指标：<span id="businessTotal">19.0</span></p>
+                                <table class="w-full">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">序号</th>
+                                            <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">评估指标</th>
+                                            <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">权重</th>
+                                            <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">主管评分 (50%)</th>
+                                            <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">项目经理评分 (50%)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b">
+                                            <td class="py-3 px-4 text-gray-600">1</td>
+                                            <td class="py-3 px-4 text-gray-800">专业能力</td>
+                                            <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-sm">25%</span></td>
+                                            <td class="text-center py-3 px-4"><input type="number" class="ability-supervisor w-20 text-center border rounded px-2 py-1" min="0" max="5" step="0.5" value="0" oninput="calculateAbility()"></td>
+                                            <td class="text-center py-3 px-4"><input type="number" class="ability-manager w-20 text-center border rounded px-2 py-1" min="0" max="5" step="0.5" value="0" oninput="calculateAbility()"></td>
+                                        </tr>
+                                        <tr class="border-b">
+                                            <td class="py-3 px-4 text-gray-600">2</td>
+                                            <td class="py-3 px-4 text-gray-800">工作态度</td>
+                                            <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-sm">25%</span></td>
+                                            <td class="text-center py-3 px-4"><input type="number" class="ability-supervisor w-20 text-center border rounded px-2 py-1" min="0" max="5" step="0.5" value="0" oninput="calculateAbility()"></td>
+                                            <td class="text-center py-3 px-4"><input type="number" class="ability-manager w-20 text-center border rounded px-2 py-1" min="0" max="5" step="0.5" value="0" oninput="calculateAbility()"></td>
+                                        </tr>
+                                        <tr class="border-b">
+                                            <td class="py-3 px-4 text-gray-600">3</td>
+                                            <td class="py-3 px-4 text-gray-800">团队协作</td>
+                                            <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-sm">25%</span></td>
+                                            <td class="text-center py-3 px-4"><input type="number" class="ability-supervisor w-20 text-center border rounded px-2 py-1" min="0" max="5" step="0.5" value="0" oninput="calculateAbility()"></td>
+                                            <td class="text-center py-3 px-4"><input type="number" class="ability-manager w-20 text-center border rounded px-2 py-1" min="0" max="5" step="0.5" value="0" oninput="calculateAbility()"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-3 px-4 text-gray-600">4</td>
+                                            <td class="py-3 px-4 text-gray-800">学习成长</td>
+                                            <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-sm">25%</span></td>
+                                            <td class="text-center py-3 px-4"><input type="number" class="ability-supervisor w-20 text-center border rounded px-2 py-1" min="0" max="5" step="0.5" value="0" oninput="calculateAbility()"></td>
+                                            <td class="text-center py-3 px-4"><input type="number" class="ability-manager w-20 text-center border rounded px-2 py-1" min="0" max="5" step="0.5" value="0" oninput="calculateAbility()"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                            <div class="flex space-x-4">
-                                <button class="px-6 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition">暂存</button>
-                                <button class="px-6 py-3 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition" onclick="submitEvaluation()">提交打分</button>
+
+                            <!-- 经营指标（20 分） -->
+                            <div class="mb-6">
+                                <h4 class="text-md font-semibold text-gray-800 mb-3 flex items-center">
+                                    <i class="fas fa-chart-line text-orange-600 mr-2"></i>经营指标（20 分）
+                                </h4>
+                                <div class="flex items-center justify-between p-4 bg-orange-50 rounded">
+                                    <div>
+                                        <p class="text-gray-600">系统自动计算（累计实际/累计计划 × 分值）</p>
+                                        <p class="text-sm text-gray-500 mt-1">目标完成率：<span class="font-medium text-green-600">95%</span></p>
+                                    </div>
+                                    <div class="text-right">
+                                        <label class="block text-sm text-gray-500 mb-1">得分</label>
+                                        <input type="number" id="businessScore" class="w-24 text-center border rounded px-3 py-2 font-semibold bg-gray-100" value="19.0" readonly>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 总分汇总 -->
+                            <div class="bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg shadow-lg p-6 text-white">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-blue-100">总分汇总</p>
+                                        <div class="flex items-baseline space-x-4 mt-2">
+                                            <p class="text-4xl font-bold"><span id="totalScore">0.0</span> 分</p>
+                                            <p class="text-lg text-blue-100">等级：<span id="gradeLevel" class="font-bold">-</span></p>
+                                        </div>
+                                        <p class="text-sm text-blue-100 mt-2">关键任务：<span id="taskTotal">0.0</span> + 能力态度：<span id="abilityTotal">0.0</span> + 经营指标：<span id="businessTotal">19.0</span></p>
+                                    </div>
+                                    <div class="flex space-x-4">
+                                        <button class="px-6 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition">暂存</button>
+                                        <button class="px-6 py-3 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition" onclick="submitEvaluation()">提交打分</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -202,85 +235,81 @@
             </main>
         </div>
     </div>
-
     <script>
-        // 计算单行加权得分
-        function calculateRow(input) {
-            const row = input.closest('tr');
-            const supervisorScore = parseFloat(row.querySelector('.supervisor-score').value) || 0;
-            const managerScore = parseFloat(row.querySelector('.manager-score').value) || 0;
-            const weight = parseFloat(input.dataset.weight);
-            const r1 = parseFloat(input.dataset.r1); // 主管权重
-            const r2 = parseFloat(input.dataset.r2); // 经理权重
+        function switchTab(tab) {
+            const auditTab = document.getElementById('auditTab');
+            const evaluateTab = document.getElementById('evaluateTab');
+            const buttons = document.querySelectorAll('button[onclick^="switchTab"]');
             
-            // 加权计算：主管 60% + 经理 40%
-            const total = (supervisorScore * r1) + (managerScore * r2);
-            row.querySelector('.row-total').textContent = total.toFixed(1);
-            calculateTotal();
+            if (tab === 'audit') {
+                auditTab.classList.remove('hidden');
+                evaluateTab.classList.add('hidden');
+                buttons[0].classList.add('border-blue-500', 'text-blue-600');
+                buttons[0].classList.remove('border-transparent', 'text-gray-500');
+                buttons[1].classList.remove('border-blue-500', 'text-blue-600');
+                buttons[1].classList.add('border-transparent', 'text-gray-500');
+            } else {
+                auditTab.classList.add('hidden');
+                evaluateTab.classList.remove('hidden');
+                buttons[1].classList.add('border-blue-500', 'text-blue-600');
+                buttons[1].classList.remove('border-transparent', 'text-gray-500');
+                buttons[0].classList.remove('border-blue-500', 'text-blue-600');
+                buttons[0].classList.add('border-transparent', 'text-gray-500');
+            }
         }
-
-        // 计算能力态度总分
-        function calculateCapabilityTotal() {
-            let total = 0;
-            document.querySelectorAll('.capability-score').forEach(input => {
-                total += parseFloat(input.value) || 0;
-            });
-            return total;
+        
+        function auditTask(btn, action) {
+            const row = btn.closest('tr');
+            const statusCell = row.cells[4];
+            const actionCell = row.cells[5];
+            
+            if (action === 'approved') {
+                statusCell.innerHTML = '<span class="px-2 py-1 bg-green-100 text-green-700 rounded text-sm">已通过</span>';
+            } else {
+                statusCell.innerHTML = '<span class="px-2 py-1 bg-red-100 text-red-700 rounded text-sm">已驳回</span>';
+            }
+            actionCell.innerHTML = '<span class="text-gray-400 text-sm">已处理</span>';
+            alert('任务已' + (action === 'approved' ? '通过' : '驳回'));
         }
-
-        // 计算关键任务总分
-        function calculateTaskTotal() {
-            let total = 0;
-            document.querySelectorAll('.row-total').forEach(el => {
-                total += parseFloat(el.textContent) || 0;
-            });
-            return total;
-        }
-
-        // 计算总分并更新等级
+        
         function calculateTotal() {
-            const taskTotal = calculateTaskTotal();
-            const capabilityTotal = calculateCapabilityTotal();
+            let taskTotal = 0;
+            document.querySelectorAll('.task-score').forEach(input => {
+                taskTotal += parseFloat(input.value) || 0;
+            });
+            
+            const abilityTotal = parseFloat(document.getElementById('abilityTotal').textContent) || 0;
             const businessTotal = parseFloat(document.getElementById('businessScore').value) || 0;
-            const total = taskTotal + capabilityTotal + businessTotal;
-
+            
+            const total = taskTotal + abilityTotal + businessTotal;
             document.getElementById('totalScore').textContent = total.toFixed(1);
             document.getElementById('taskTotal').textContent = taskTotal.toFixed(1);
-            document.getElementById('capabilityTotal').textContent = capabilityTotal.toFixed(1);
-            document.getElementById('businessTotal').textContent = businessTotal.toFixed(1);
-
-            // 计算等级
-            let grade = '-';
-            if (total >= 90) grade = 'A（优秀）';
-            else if (total >= 80) grade = 'B（良好）';
-            else if (total >= 70) grade = 'C（合格）';
-            else grade = 'D（待改进）';
+            
+            // 等级评定
+            const grade = total >= 90 ? 'A' : total >= 80 ? 'B' : total >= 70 ? 'C' : 'D';
             document.getElementById('gradeLevel').textContent = grade;
         }
-
-        // 提交打分
+        
+        function calculateAbility() {
+            let supervisorTotal = 0;
+            let managerTotal = 0;
+            
+            document.querySelectorAll('.ability-supervisor').forEach(input => {
+                supervisorTotal += parseFloat(input.value) || 0;
+            });
+            document.querySelectorAll('.ability-manager').forEach(input => {
+                managerTotal += parseFloat(input.value) || 0;
+            });
+            
+            // 双考评人 50%+50% 加权
+            const abilityTotal = (supervisorTotal * 0.5) + (managerTotal * 0.5);
+            document.getElementById('abilityTotal').textContent = abilityTotal.toFixed(1);
+            calculateTotal();
+        }
+        
         function submitEvaluation() {
-            const total = parseFloat(document.getElementById('totalScore').textContent);
-            if (total === 0) {
-                alert('请先完成所有评分项！');
-                return;
-            }
-            if (confirm('确认提交考核评分？\n总分：' + total.toFixed(1) + ' 分')) {
-                alert('考核评分已提交！');
-            }
+            alert('考核打分已提交！');
         }
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
