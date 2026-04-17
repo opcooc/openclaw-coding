@@ -9,16 +9,17 @@
 <body class="bg-gray-50 min-h-screen">
     <div class="flex h-screen">
         <aside class="w-64 bg-blue-700 text-white flex-shrink-0">
-    <div class="p-4 mx-3 mb-2 mt-4"><img src="../images/huagui-logo.png?v=20260417" alt="华规软件" class="w-full h-auto"></div>
-    <nav class="mt-2">
-        <a href="02-workbench.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-home w-6"></i><span>工作台</span></a>
-        <a href="03-task-submission.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-edit w-6"></i><span>任务填报</span></a>
-        <a href="05-score-query.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-chart-line w-6"></i><span>成绩查询</span></a>
-        <a href="06-admin-config.html" class="flex items-center px-6 py-3 bg-blue-600 border-l-4 border-white"><i class="fas fa-cog w-6"></i><span>系统配置</span></a>
-        <a href="07-report-analysis.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-file-alt w-6"></i><span>报表中心</span></a>
-        <a href="08-subordinate-evaluation.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-users w-6"></i><span>下属考核</span></a><a href="09-user-management.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-user-cog w-6"></i><span>用户管理</span></a><a href="10-role-config.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-user-tag w-6"></i><span>角色配置</span></a><a href="11-org-structure.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-sitemap w-6"></i><span>组织关系</span></a>
-    </nav>
-</aside>
+            <div class="p-4 mx-3 mb-2 mt-4"><img src="../images/huagui-logo.png?v=20260417" alt="华规软件" class="w-full h-auto"></div>
+            <nav class="mt-2">
+                <a href="02-workbench.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-home w-6"></i><span>工作台</span></a>
+                <a href="03-task-submission.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-edit w-6"></i><span>任务填报</span></a>
+                <a href="06-admin-config.html" class="flex items-center px-6 py-3 bg-blue-600 border-l-4 border-white"><i class="fas fa-cog w-6"></i><span>系统配置</span></a>
+                <a href="07-report-analysis.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-file-alt w-6"></i><span>报表中心</span></a>
+                <a href="08-subordinate-evaluation.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-users w-6"></i><span>下属考核</span></a>
+                <a href="09-user-management.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-user-cog w-6"></i><span>用户管理</span></a>
+                <a href="11-org-structure.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-sitemap w-6"></i><span>组织关系</span></a>
+            </nav>
+        </aside>
         <div class="flex-1 flex flex-col overflow-hidden">
             <header class="bg-white shadow-sm border-b px-6 py-4">
                 <div class="flex justify-between items-center">
@@ -27,13 +28,11 @@
                 </div>
             </header>
             <main class="flex-1 overflow-y-auto p-6">
-                <div class="max-w-6xl mx-auto">
-                    <div class="bg-white rounded-lg shadow mb-6">
-                        <div class="border-b"><nav class="flex space-x-4 px-4"><button class="px-4 py-3 border-b-2 border-blue-500 text-blue-600 font-medium">岗位权重配置</button><button class="px-4 py-3 border-b-2 border-transparent text-gray-500">指标模板管理</button></nav></div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow p-6 mb-6">
+                <div class="max-w-6xl mx-auto space-y-6">
+                    <!-- 岗位权重配置 -->
+                    <div class="bg-white rounded-lg shadow p-6">
                         <div class="flex justify-between items-center mb-4">
-                            <h3 class="text-lg font-semibold text-gray-800">岗位权重配置</h3>
+                            <h3 class="text-lg font-semibold text-gray-800"><i class="fas fa-briefcase text-blue-600 mr-2"></i>岗位权重配置</h3>
                             <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"><i class="fas fa-plus mr-2"></i>新增岗位</button>
                         </div>
                         <table class="w-full">
@@ -45,27 +44,50 @@
                             </tbody>
                         </table>
                     </div>
+
+                    <!-- 打分权重配置 -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4"><i class="fas fa-percentage text-green-600 mr-2"></i>打分权重配置</h3>
+                        <table class="w-full">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">考评人角色</th>
+                                    <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">权重</th>
+                                    <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">适用场景</th>
+                                    <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b">
+                                    <td class="py-3 px-4">直接上级（技术主管）</td>
+                                    <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">100%</span></td>
+                                    <td class="py-3 px-4 text-gray-600">普通员工考核</td>
+                                    <td class="text-center py-3 px-4"><button class="text-blue-600 hover:text-blue-700 text-sm">编辑</button></td>
+                                </tr>
+                                <tr class="border-b">
+                                    <td class="py-3 px-4">直接上级 + 项目经理</td>
+                                    <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-sm">50% + 50%</span></td>
+                                    <td class="py-3 px-4 text-gray-600">项目成员考核</td>
+                                    <td class="text-center py-3 px-4"><button class="text-blue-600 hover:text-blue-700 text-sm">编辑</button></td>
+                                </tr>
+                                <tr class="border-b">
+                                    <td class="py-3 px-4">部门经理</td>
+                                    <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-orange-100 text-orange-700 rounded text-sm">100%</span></td>
+                                    <td class="py-3 px-4 text-gray-600">部门内员工考核 + 审核主管评分</td>
+                                    <td class="text-center py-3 px-4"><button class="text-blue-600 hover:text-blue-700 text-sm">编辑</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3 px-4">总经理</td>
+                                    <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-red-100 text-red-700 rounded text-sm">100%</span></td>
+                                    <td class="py-3 px-4 text-gray-600">高管考核 + 最终审批</td>
+                                    <td class="text-center py-3 px-4"><button class="text-blue-600 hover:text-blue-700 text-sm">编辑</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </main>
         </div>
     </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
