@@ -7,14 +7,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .logo-img { mix-blend-mode: multiply; }
+        .logo-container { background: #1e40af; padding: 1.5rem; border-bottom: 1px solid #1e3a8a; }
+        .logo-container img { filter: brightness(0) saturate(100%) invert(87%) sepia(18%) saturate(683%) hue-rotate(148deg) brightness(92%) contrast(85%); }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
     <div class="flex h-screen">
         <aside class="w-64 bg-blue-700 text-white flex-shrink-0">
-            <div class="p-6 border-b border-blue-600 bg-white">
-                <img src="../images/huagui-logo.png" alt="华规软件" class="w-full h-auto logo-img">
+            <div class="logo-container">
+                <img src="../images/huagui-logo.png" alt="华规软件" class="w-full h-auto">
             </div>
             <nav class="mt-6">
                 <a href="02-workbench.html" class="flex items-center px-6 py-3 bg-blue-600 border-l-4 border-white"><i class="fas fa-home w-6"></i><span>工作台</span></a>
@@ -108,3 +109,4 @@
     </div>
 </body>
 </html>
+
