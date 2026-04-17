@@ -11,16 +11,18 @@
     <div class="flex h-screen">
         <!-- 侧边栏 -->
         <aside class="w-64 bg-blue-700 text-white flex-shrink-0">
-    <div class="p-4 mx-3 mb-2 mt-4"><img src="../images/huagui-logo.png?v=20260417" alt="华规软件" class="w-full h-auto" style="mix-blend-mode: multiply;"></div>
-    <nav class="mt-2">
-        <a href="02-workbench.html" class="flex items-center px-6 py-3 bg-blue-600 border-l-4 border-white"><i class="fas fa-home w-6"></i><span>工作台</span></a>
-        <a href="03-task-submission.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-edit w-6"></i><span>任务填报</span></a>
-        <a href="05-score-query.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-chart-line w-6"></i><span>成绩查询</span></a>
-        <a href="06-admin-config.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-cog w-6"></i><span>系统配置</span></a>
-        <a href="07-report-analysis.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-file-alt w-6"></i><span>报表中心</span></a>
-        <a href="08-subordinate-evaluation.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-users w-6"></i><span>下属考核</span></a><a href="09-user-management.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-user-cog w-6"></i><span>用户管理</span></a><a href="10-role-config.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-user-tag w-6"></i><span>角色配置</span></a><a href="11-org-structure.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-sitemap w-6"></i><span>组织关系</span></a>
-    </nav>
-</aside>
+            <div class="p-4 mx-3 mb-2 mt-4"><img src="../images/huagui-logo.png?v=20260417" alt="华规软件" class="w-full h-auto"></div>
+            <nav class="mt-2">
+                <a href="02-workbench.html" class="flex items-center px-6 py-3 bg-blue-600 border-l-4 border-white"><i class="fas fa-home w-6"></i><span>工作台</span></a>
+                <a href="03-task-submission.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-edit w-6"></i><span>任务填报</span></a>
+                <a href="06-admin-config.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-cog w-6"></i><span>系统配置</span></a>
+                <a href="07-report-analysis.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-file-alt w-6"></i><span>报表中心</span></a>
+                <a href="08-subordinate-evaluation.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-users w-6"></i><span>下属考核</span></a>
+                <a href="09-user-management.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-user-cog w-6"></i><span>用户管理</span></a>
+                <a href="10-role-config.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-user-tag w-6"></i><span>角色配置</span></a>
+                <a href="11-org-structure.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-sitemap w-6"></i><span>组织关系</span></a>
+            </nav>
+        </aside>
 
         <!-- 主内容区 -->
         <div class="flex-1 flex flex-col overflow-hidden">
@@ -40,79 +42,167 @@
 
             <!-- 内容区 -->
             <main class="flex-1 overflow-y-auto p-6">
-                <div class="grid grid-cols-3 gap-6">
-                    <!-- 左侧主区域 (2/3) -->
-                    <div class="col-span-2 space-y-6">
-                        <!-- 待办任务 -->
-                        <div class="mb-6">
-                            <h3 class="text-sm font-semibold text-gray-700 mb-3 flex items-center">
-                                <i class="fas fa-tasks text-blue-600 mr-2"></i>待办任务
-                            </h3>
-                            <div class="grid grid-cols-3 gap-4">
-                                <div class="bg-white rounded-lg shadow p-4 border-l-4 border-yellow-500">
-                                    <div class="flex items-center justify-between">
-                                        <div><p class="text-gray-500 text-xs">待填报</p><p class="text-2xl font-bold text-gray-800 mt-1">5</p></div>
-                                        <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center"><i class="fas fa-edit text-yellow-600 text-lg"></i></div>
-                                    </div>
+                <div class="max-w-7xl mx-auto">
+                    <!-- 待办任务 -->
+                    <div class="mb-6">
+                        <h3 class="text-sm font-semibold text-gray-700 mb-3 flex items-center">
+                            <i class="fas fa-tasks text-blue-600 mr-2"></i>待办任务
+                        </h3>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-yellow-500">
+                                <div class="flex items-center justify-between">
+                                    <div><p class="text-gray-500 text-xs">待填报</p><p class="text-2xl font-bold text-gray-800 mt-1">5</p></div>
+                                    <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center"><i class="fas fa-edit text-yellow-600 text-lg"></i></div>
                                 </div>
-                                <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500">
-                                    <div class="flex items-center justify-between">
-                                        <div><p class="text-gray-500 text-xs">待审核</p><p class="text-2xl font-bold text-gray-800 mt-1">3</p></div>
-                                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center"><i class="fas fa-check-circle text-blue-600 text-lg"></i></div>
-                                    </div>
+                            </div>
+                            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500">
+                                <div class="flex items-center justify-between">
+                                    <div><p class="text-gray-500 text-xs">待审核</p><p class="text-2xl font-bold text-gray-800 mt-1">3</p></div>
+                                    <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center"><i class="fas fa-check-circle text-blue-600 text-lg"></i></div>
                                 </div>
-                                <div class="bg-white rounded-lg shadow p-4 border-l-4 border-green-500">
-                                    <div class="flex items-center justify-between">
-                                        <div><p class="text-gray-500 text-xs">待打分</p><p class="text-2xl font-bold text-gray-800 mt-1">8</p></div>
-                                        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center"><i class="fas fa-star text-green-600 text-lg"></i></div>
-                                    </div>
+                            </div>
+                            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-green-500">
+                                <div class="flex items-center justify-between">
+                                    <div><p class="text-gray-500 text-xs">待打分</p><p class="text-2xl font-bold text-gray-800 mt-1">8</p></div>
+                                    <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center"><i class="fas fa-star text-green-600 text-lg"></i></div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- 快捷入口 -->
-                        <div class="bg-white rounded-lg shadow p-4">
-                            <h3 class="text-sm font-semibold text-gray-700 mb-3">快捷入口</h3>
-                            <div class="grid grid-cols-4 gap-3">
-                                <button class="flex flex-col items-center p-3 border rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors">
-                                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mb-2"><i class="fas fa-plus text-blue-600 text-sm"></i></div>
-                                    <span class="text-xs text-gray-700">新建考核</span>
-                                </button>
-                                <button class="flex flex-col items-center p-3 border rounded-lg hover:bg-green-50 hover:border-green-300 transition-colors">
-                                    <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mb-2"><i class="fas fa-upload text-green-600 text-sm"></i></div>
-                                    <span class="text-xs text-gray-700">批量导入</span>
-                                </button>
-                                <button class="flex flex-col items-center p-3 border rounded-lg hover:bg-purple-50 hover:border-purple-300 transition-colors">
-                                    <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center mb-2"><i class="fas fa-download text-purple-600 text-sm"></i></div>
-                                    <span class="text-xs text-gray-700">导出报表</span>
-                                </button>
-                                <button class="flex flex-col items-center p-3 border rounded-lg hover:bg-orange-50 hover:border-orange-300 transition-colors">
-                                    <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center mb-2"><i class="fas fa-bell text-orange-600 text-sm"></i></div>
-                                    <span class="text-xs text-gray-700">消息通知</span>
-                                </button>
-                            </div>
+                    <!-- 快捷入口 -->
+                    <div class="bg-white rounded-lg shadow p-4 mb-6">
+                        <h3 class="text-sm font-semibold text-gray-700 mb-3">快捷入口</h3>
+                        <div class="grid grid-cols-4 gap-3">
+                            <button class="flex flex-col items-center p-3 border rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors">
+                                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mb-2"><i class="fas fa-plus text-blue-600 text-sm"></i></div>
+                                <span class="text-xs text-gray-700">新建考核</span>
+                            </button>
+                            <button class="flex flex-col items-center p-3 border rounded-lg hover:bg-green-50 hover:border-green-300 transition-colors">
+                                <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mb-2"><i class="fas fa-upload text-green-600 text-sm"></i></div>
+                                <span class="text-xs text-gray-700">批量导入</span>
+                            </button>
+                            <button class="flex flex-col items-center p-3 border rounded-lg hover:bg-purple-50 hover:border-purple-300 transition-colors">
+                                <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center mb-2"><i class="fas fa-download text-purple-600 text-sm"></i></div>
+                                <span class="text-xs text-gray-700">导出报表</span>
+                            </button>
+                            <button class="flex flex-col items-center p-3 border rounded-lg hover:bg-orange-50 hover:border-orange-300 transition-colors">
+                                <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center mb-2"><i class="fas fa-bell text-orange-600 text-sm"></i></div>
+                                <span class="text-xs text-gray-700">消息通知</span>
+                            </button>
                         </div>
+                    </div>
 
+                    <!-- 两栏布局：左侧考核进度，右侧个人成绩 -->
+                    <div class="grid grid-cols-2 gap-6 mb-6">
                         <!-- 考核进度 -->
                         <div class="bg-white rounded-lg shadow p-4">
                             <h3 class="text-sm font-semibold text-gray-700 mb-3">考核进度</h3>
                             <div>
                                 <div class="flex justify-between mb-2"><span class="text-sm text-gray-700">2026 年第一季度考核</span><span class="text-xs text-gray-500">截止：2026-04-30</span></div>
-                                <div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600 h-2 rounded-full" style="width: 65%"></div></div>
-                                <p class="text-xs text-gray-500 mt-1">当前进度：65%</p>
+                                <div class="w-full bg-gray-200 rounded-full h-2 mb-4"><div class="bg-blue-600 h-2 rounded-full" style="width: 75%"></div></div>
+                                <div class="flex justify-between mb-2"><span class="text-sm text-gray-700">2026 年第二季度考核</span><span class="text-xs text-gray-500">未开始</span></div>
+                                <div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-gray-400 h-2 rounded-full" style="width: 0%"></div></div>
+                            </div>
+                        </div>
+
+                        <!-- 个人最新成绩 -->
+                        <div class="bg-white rounded-lg shadow p-4">
+                            <h3 class="text-sm font-semibold text-gray-700 mb-3"><i class="fas fa-chart-line text-green-600 mr-2"></i>个人最新成绩</h3>
+                            <div class="flex items-center justify-between mb-3">
+                                <div>
+                                    <p class="text-xs text-gray-500">2026-03 周期</p>
+                                    <p class="text-3xl font-bold text-blue-600 mt-1">91.5 分</p>
+                                </div>
+                                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+                                    <span class="text-2xl font-bold text-green-600">A</span>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-2 text-center">
+                                <div class="bg-gray-50 rounded p-2"><p class="text-xs text-gray-500">关键任务</p><p class="text-sm font-semibold">54.0</p></div>
+                                <div class="bg-gray-50 rounded p-2"><p class="text-xs text-gray-500">能力态度</p><p class="text-sm font-semibold">18.5</p></div>
+                                <div class="bg-gray-50 rounded p-2"><p class="text-xs text-gray-500">经营指标</p><p class="text-sm font-semibold">19.0</p></div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 右侧区域 (1/3) - 通知公告独占 -->
-                    <div class="col-span-1">
-                        <div class="bg-white rounded-lg shadow p-4 h-full">
-                            <h3 class="text-sm font-semibold text-gray-700 mb-3 flex items-center"><i class="fas fa-bullhorn text-blue-600 mr-2"></i>通知公告</h3>
-                            <div class="space-y-3">
-                                <div class="border-l-4 border-red-500 pl-3 py-2 bg-red-50 rounded-r"><p class="text-sm font-medium text-gray-800">关于完成 Q1 绩效考核的通知</p><p class="text-xs text-gray-500 mt-1">2026-04-15</p></div>
-                                <div class="border-l-4 border-blue-500 pl-3 py-2 bg-blue-50 rounded-r"><p class="text-sm font-medium text-gray-800">系统维护公告</p><p class="text-xs text-gray-500 mt-1">2026-04-10</p></div>
-                                <div class="border-l-4 border-green-500 pl-3 py-2 bg-green-50 rounded-r"><p class="text-sm font-medium text-gray-800">绩效考核制度更新说明</p><p class="text-xs text-gray-500 mt-1">2026-04-05</p></div>
-                                <div class="border-l-4 border-purple-500 pl-3 py-2 bg-purple-50 rounded-r"><p class="text-sm font-medium text-gray-800">新员工培训安排</p><p class="text-xs text-gray-500 mt-1">2026-04-01</p></div>
+                    <!-- 历史成绩表格 -->
+                    <div class="bg-white rounded-lg shadow mb-6">
+                        <div class="p-4 border-b flex justify-between items-center">
+                            <h3 class="text-lg font-semibold text-gray-800">历史成绩</h3>
+                            <div class="flex gap-2">
+                                <select class="border rounded px-3 py-1 text-sm"><option>2026 年</option><option>2025 年</option></select>
+                                <select class="border rounded px-3 py-1 text-sm"><option>全部周期</option><option>第一季度</option><option>第二季度</option></select>
+                            </div>
+                        </div>
+                        <table class="w-full">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">周期</th>
+                                    <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">关键任务</th>
+                                    <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">能力态度</th>
+                                    <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">经营指标</th>
+                                    <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">总分</th>
+                                    <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">等级</th>
+                                    <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b hover:bg-gray-50">
+                                    <td class="py-3 px-4">2026-03</td>
+                                    <td class="text-center">54.0</td>
+                                    <td class="text-center">18.5</td>
+                                    <td class="text-center">19.0</td>
+                                    <td class="text-center font-bold text-blue-600">91.5</td>
+                                    <td class="text-center"><span class="px-2 py-1 bg-green-100 text-green-700 rounded text-sm">A</span></td>
+                                    <td class="text-center"><button class="text-blue-600 hover:text-blue-700 text-sm">详情</button></td>
+                                </tr>
+                                <tr class="border-b hover:bg-gray-50">
+                                    <td class="py-3 px-4">2026-02</td>
+                                    <td class="text-center">51.0</td>
+                                    <td class="text-center">17.0</td>
+                                    <td class="text-center">18.5</td>
+                                    <td class="text-center font-bold text-blue-600">86.5</td>
+                                    <td class="text-center"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">B</span></td>
+                                    <td class="text-center"><button class="text-blue-600 hover:text-blue-700 text-sm">详情</button></td>
+                                </tr>
+                                <tr class="border-b hover:bg-gray-50">
+                                    <td class="py-3 px-4">2026-01</td>
+                                    <td class="text-center">55.5</td>
+                                    <td class="text-center">19.0</td>
+                                    <td class="text-center">20.0</td>
+                                    <td class="text-center font-bold text-blue-600">94.5</td>
+                                    <td class="text-center"><span class="px-2 py-1 bg-green-100 text-green-700 rounded text-sm">A</span></td>
+                                    <td class="text-center"><button class="text-blue-600 hover:text-blue-700 text-sm">详情</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- 通知公告 -->
+                    <div class="bg-white rounded-lg shadow p-4">
+                        <h3 class="text-sm font-semibold text-gray-700 mb-3"><i class="fas fa-bullhorn text-orange-600 mr-2"></i>通知公告</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-start justify-between py-2 border-b">
+                                <div class="flex-1">
+                                    <p class="text-sm text-gray-800 font-medium">关于 2026 年第一季度绩效考核的通知</p>
+                                    <p class="text-xs text-gray-500 mt-1">请各位同事于 4 月 30 日前完成本季度考核填报。</p>
+                                </div>
+                                <span class="text-xs text-gray-400 ml-4">04-15</span>
+                            </div>
+                            <div class="flex items-start justify-between py-2 border-b">
+                                <div class="flex-1">
+                                    <p class="text-sm text-gray-800 font-medium">绩效考核系统操作培训</p>
+                                    <p class="text-xs text-gray-500 mt-1">4 月 20 日下午 2 点，信息中心组织系统操作培训。</p>
+                                </div>
+                                <span class="text-xs text-gray-400 ml-4">04-10</span>
+                            </div>
+                            <div class="flex items-start justify-between py-2">
+                                <div class="flex-1">
+                                    <p class="text-sm text-gray-800 font-medium">2025 年度绩效考核结果公示</p>
+                                    <p class="text-xs text-gray-500 mt-1">年度绩效考核结果已公布，请查看个人成绩。</p>
+                                </div>
+                                <span class="text-xs text-gray-400 ml-4">03-28</span>
                             </div>
                         </div>
                     </div>
@@ -122,14 +212,3 @@
     </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
