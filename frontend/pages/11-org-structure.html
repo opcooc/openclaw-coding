@@ -1,372 +1,80 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>缁勭粐鍏崇郴 - 鍗庤缁╂晥鑰冭瘎绯荤粺</title>
+    <title>组织关系 - 华规绩效考评系统</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-gray-50 min-h-screen">
     <div class="flex h-screen">
-        <!-- 渚ц竟鏍?-->
         <aside class="w-64 bg-blue-700 text-white flex-shrink-0">
-            <div class="p-4 mx-3 mb-2 mt-4"><img src="../images/huagui-logo.png?v=20260417" alt="鍗庤杞欢" class="w-full h-auto"></div>
+            <div class="p-4 mx-3 mb-2 mt-4"><img src="../images/huagui-logo.png?v=20260417" alt="华规软件" class="w-full h-auto"></div>
             <nav class="mt-2">
-                <a href="02-workbench.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-home w-6"></i><span>宸ヤ綔鍙?/span></a>
-                <a href="03-task-submission.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-edit w-6"></i><span>浠诲姟濉姤</span></a>
-                <a href="05-score-query.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-chart-line w-6"></i><span>鎴愮哗鏌ヨ</span></a>
-                <a href="06-admin-config.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-cog w-6"></i><span>绯荤粺閰嶇疆</span></a>
-                <a href="07-report-analysis.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-file-alt w-6"></i><span>鎶ヨ〃涓績</span></a>
-                <a href="08-subordinate-evaluation.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-users w-6"></i><span>涓嬪睘鑰冩牳</span></a>
-                <a href="09-user-management.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-user-cog w-6"></i><span>鐢ㄦ埛绠＄悊</span></a>
-                <a href="10-role-config.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-user-tag w-6"></i><span>瑙掕壊閰嶇疆</span></a>
-                <a href="11-org-structure.html" class="flex items-center px-6 py-3 bg-blue-600 border-l-4 border-white"><i class="fas fa-sitemap w-6"></i><span>缁勭粐鍏崇郴</span></a>
+                <a href="02-workbench.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-home w-6"></i><span>工作台</span></a>
+                <a href="03-task-submission.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-edit w-6"></i><span>任务填报</span></a>
+                <a href="06-admin-config.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-cog w-6"></i><span>系统配置</span></a>
+                <a href="07-report-analysis.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-file-alt w-6"></i><span>报表中心</span></a>
+                <a href="08-subordinate-evaluation.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-users w-6"></i><span>下属考核</span></a>
+                <a href="09-user-management.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-user-cog w-6"></i><span>用户管理</span></a>
+                <a href="10-role-config.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-user-tag w-6"></i><span>角色配置</span></a>
+                <a href="11-org-structure.html" class="flex items-center px-6 py-3 bg-blue-600 border-l-4 border-white"><i class="fas fa-sitemap w-6"></i><span>组织关系</span></a>
             </nav>
         </aside>
-
-        <!-- 涓诲唴瀹瑰尯 -->
         <div class="flex-1 flex flex-col overflow-hidden">
             <header class="bg-white shadow-sm border-b px-6 py-4">
                 <div class="flex justify-between items-center">
-                    <h2 class="text-2xl font-semibold text-gray-800">缁勭粐鍏崇郴绠＄悊</h2>
+                    <h2 class="text-2xl font-semibold text-gray-800">组织关系管理</h2>
                     <div class="flex items-center space-x-4">
-                        <span class="text-gray-600">绠＄悊鍛?/span>
-                        <a href="01-login.html" class="text-gray-500 hover:text-red-600"><i class="fas fa-sign-out-alt"></i><span class="ml-1">閫€鍑?/span></a>
+                        <span class="text-gray-600">管理员</span>
+                        <a href="01-login.html" class="text-gray-500 hover:text-red-600"><i class="fas fa-sign-out-alt"></i><span class="ml-1">退出</span></a>
                     </div>
                 </div>
             </header>
-
             <main class="flex-1 overflow-y-auto p-6">
-                <div class="max-w-7xl mx-auto">
-                    <!-- 缁熻鍗＄墖 -->
-                    <div class="grid grid-cols-4 gap-6 mb-6">
-                        <div class="bg-white rounded-lg shadow p-6">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <p class="text-gray-500 text-sm">閮ㄩ棬鎬绘暟</p>
-                                    <p class="text-3xl font-bold text-gray-800 mt-1">8</p>
-                                </div>
-                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-building text-blue-600 text-xl"></i>
-                                </div>
+                <div class="grid grid-cols-3 gap-6">
+                    <div class="col-span-1">
+                        <div class="bg-white rounded-lg shadow">
+                            <div class="p-4 border-b flex justify-between items-center">
+                                <h3 class="text-lg font-semibold text-gray-800">部门列表</h3>
+                                <button class="bg-green-600 text-white px-3 py-1.5 rounded-lg hover:bg-green-700 text-sm" onclick="showAddModal()"><i class="fas fa-plus mr-1"></i>新增</button>
                             </div>
-                        </div>
-                        <div class="bg-white rounded-lg shadow p-6">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <p class="text-gray-500 text-sm">鍛樺伐鎬绘暟</p>
-                                    <p class="text-3xl font-bold text-gray-800 mt-1">156</p>
-                                </div>
-                                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-users text-green-600 text-xl"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bg-white rounded-lg shadow p-6">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <p class="text-gray-500 text-sm">鑰冩牳鍏崇郴</p>
-                                    <p class="text-3xl font-bold text-gray-800 mt-1">142</p>
-                                </div>
-                                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-link text-purple-600 text-xl"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bg-white rounded-lg shadow p-6">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <p class="text-gray-500 text-sm">寰呴厤缃?/p>
-                                    <p class="text-3xl font-bold text-gray-800 mt-1">14</p>
-                                </div>
-                                <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-exclamation-circle text-orange-600 text-xl"></i>
+                            <div class="p-4" id="deptList">
+                                <div class="border rounded-lg p-3 hover:bg-blue-50 cursor-pointer bg-blue-50">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-2">
+                                            <i class="fas fa-building text-blue-600"></i>
+                                            <span class="font-medium text-gray-800">研发中心</span>
+                                        </div>
+                                        <div class="flex space-x-2">
+                                            <button class="text-blue-600 hover:text-blue-700" onclick="editDept('研发中心')"><i class="fas fa-edit"></i></button>
+                                            <button class="text-red-600 hover:text-red-700" onclick="deleteDept('研发中心')"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="text-xs text-gray-500 mt-1 ml-6">45 人</div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- 缁勭粐鏋舵瀯鏍?-->
-                    <div class="grid grid-cols-3 gap-6">
-                        <!-- 宸︿晶锛氶儴闂ㄥ垪琛?-->
-                        <div class="col-span-1">
-                            <div class="bg-white rounded-lg shadow">
-                                <div class="p-4 border-b flex justify-between items-center">
-                                    <h3 class="text-lg font-semibold text-gray-800">閮ㄩ棬鍒楄〃</h3><button class="bg-green-600 text-white px-3 py-1.5 rounded-lg hover:bg-green-700 text-sm" onclick="showAddModal()"><i class="fas fa-plus mr-1"></i>鏂板</button>
-                                    <button class="text-blue-600 hover:text-blue-700"><i class="fas fa-plus"></i></button>
-                                </div>
-                                <div class="p-4">
-                                    <div class="space-y-2">
-                                        <div class="border rounded-lg p-3 hover:bg-blue-50 cursor-pointer bg-blue-50">
-                                            <div class="flex items-center justify-between">
-                                                <div class="flex items-center space-x-2">
-                                                    <i class="fas fa-building text-blue-600"></i>
-                                                    <span class="font-medium text-gray-800">鐮斿彂涓績</span>
-                                                </div>
-                                                <span class="text-sm text-gray-500">45 浜?/span>
-                                            </div>
-                                        </div>
-                                        <div class="border rounded-lg p-3 hover:bg-blue-50 cursor-pointer">
-                                            <div class="flex items-center justify-between">
-                                                <div class="flex items-center space-x-2">
-                                                    <i class="fas fa-building text-gray-400"></i>
-                                                    <span class="font-medium text-gray-800">寤烘ā绠楅噺閮?/span>
-                                                </div>
-                                                <span class="text-sm text-gray-500">32 浜?/span>
-                                            </div>
-                                        </div>
-                                        <div class="border rounded-lg p-3 hover:bg-blue-50 cursor-pointer">
-                                            <div class="flex items-center justify-between">
-                                                <div class="flex items-center space-x-2">
-                                                    <i class="fas fa-building text-gray-400"></i>
-                                                    <span class="font-medium text-gray-800">骞冲彴閮?/span>
-                                                </div>
-                                                <span class="text-sm text-gray-500">28 浜?/span>
-                                            </div>
-                                        </div>
-                                        <div class="border rounded-lg p-3 hover:bg-blue-50 cursor-pointer">
-                                            <div class="flex items-center justify-between">
-                                                <div class="flex items-center space-x-2">
-                                                    <i class="fas fa-building text-gray-400"></i>
-                                                    <span class="font-medium text-gray-800">钀ラ攢涓績</span>
-                                                </div>
-                                                <span class="text-sm text-gray-500">24 浜?/span>
-                                            </div>
-                                        </div>
-                                        <div class="border rounded-lg p-3 hover:bg-blue-50 cursor-pointer">
-                                            <div class="flex items-center justify-between">
-                                                <div class="flex items-center space-x-2">
-                                                    <i class="fas fa-building text-gray-400"></i>
-                                                    <span class="font-medium text-gray-800">璐㈠姟閮?/span>
-                                                </div>
-                                                <span class="text-sm text-gray-500">12 浜?/span>
-                                            </div>
-                                        </div>
-                                        <div class="border rounded-lg p-3 hover:bg-blue-50 cursor-pointer">
-                                            <div class="flex items-center justify-between">
-                                                <div class="flex items-center space-x-2">
-                                                    <i class="fas fa-building text-gray-400"></i>
-                                                    <span class="font-medium text-gray-800">浜哄姏璧勬簮閮?/span>
-                                                </div>
-                                                <span class="text-sm text-gray-500">8 浜?/span>
-                                            </div>
-                                        </div>
-                                        <div class="border rounded-lg p-3 hover:bg-blue-50 cursor-pointer">
-                                            <div class="flex items-center justify-between">
-                                                <div class="flex items-center space-x-2">
-                                                    <i class="fas fa-building text-gray-400"></i>
-                                                    <span class="font-medium text-gray-800">淇℃伅涓績</span>
-                                                </div>
-                                                <span class="text-sm text-gray-500">5 浜?/span>
-                                            </div>
-                                        </div>
-                                        <div class="border rounded-lg p-3 hover:bg-blue-50 cursor-pointer">
-                                            <div class="flex items-center justify-between">
-                                                <div class="flex items-center space-x-2">
-                                                    <i class="fas fa-building text-gray-400"></i>
-                                                    <span class="font-medium text-gray-800">鎬荤粡鍔?/span>
-                                                </div>
-                                                <span class="text-sm text-gray-500">2 浜?/span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 鍙充晶锛氳€冩牳鍏崇郴閰嶇疆 -->
-                        <div class="col-span-2">
-                            <div class="bg-white rounded-lg shadow mb-6">
-                                <div class="p-4 border-b">
-                                    <h3 class="text-lg font-semibold text-gray-800">鐮斿彂涓績 - 鑰冩牳鍏崇郴閰嶇疆</h3>
-                                </div>
-                                <div class="p-4">
-                                    <!-- 鎼滅储鏍?-->
-                                    <div class="flex gap-4 mb-4">
-                                        <input type="text" placeholder="鎼滅储鍛樺伐濮撳悕鎴栬处鍙? class="flex-1 border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500">
-                                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
-                                            <i class="fas fa-search mr-2"></i>鏌ヨ
-                                        </button>
-                                        <button class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">
-                                            <i class="fas fa-plus mr-2"></i>鏂板鍏崇郴
-                                        </button>
-                                    </div>
-
-                                    <!-- 鑰冩牳鍏崇郴琛ㄦ牸 -->
-                                    <table class="w-full">
-                                        <thead class="bg-gray-50">
-                                            <tr>
-                                                <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">琚€冩牳浜?/th>
-                                                <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">宀椾綅</th>
-                                                <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">鐩存帴涓婄骇</th>
-                                                <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">椤圭洰缁忕悊</th>
-                                                <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">鑰冩牳鏉冮噸</th>
-                                                <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">鐘舵€?/th>
-                                                <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">鎿嶄綔</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="border-b hover:bg-gray-50">
-                                                <td class="py-3 px-4">
-                                                    <div class="flex items-center space-x-2">
-                                                        <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                                                            <i class="fas fa-user text-green-600 text-sm"></i>
-                                                        </div>
-                                                        <span class="text-gray-800">鏉庢檽鏄?/span>
-                                                    </div>
-                                                </td>
-                                                <td class="py-3 px-4 text-gray-600">楂樼骇杞欢宸ョ▼甯?/td>
-                                                <td class="text-center py-3 px-4">
-                                                    <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">寮犲織寮?/span>
-                                                </td>
-                                                <td class="text-center py-3 px-4">
-                                                    <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-sm">鐜嬪缓鍗?/span>
-                                                </td>
-                                                <td class="text-center py-3 px-4">
-                                                    <span class="text-sm text-gray-600">鐩存帴涓婄骇 100%</span>
-                                                </td>
-                                                <td class="text-center py-3 px-4">
-                                                    <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-sm">姝ｅ父</span>
-                                                </td>
-                                                <td class="text-center py-3 px-4">
-                                                    <button class="text-blue-600 hover:text-blue-700 text-sm mr-2">缂栬緫</button>
-                                                    <button class="text-red-600 hover:text-red-700 text-sm">鍒犻櫎</button>
-                                                </td>
-                                            </tr>
-                                            <tr class="border-b hover:bg-gray-50">
-                                                <td class="py-3 px-4">
-                                                    <div class="flex items-center space-x-2">
-                                                        <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                                                            <i class="fas fa-user text-green-600 text-sm"></i>
-                                                        </div>
-                                                        <span class="text-gray-800">鍒樹紵</span>
-                                                    </div>
-                                                </td>
-                                                <td class="py-3 px-4 text-gray-600">杞欢宸ョ▼甯?/td>
-                                                <td class="text-center py-3 px-4">
-                                                    <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">寮犲織寮?/span>
-                                                </td>
-                                                <td class="text-center py-3 px-4">
-                                                    <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-sm">鐜嬪缓鍗?/span>
-                                                </td>
-                                                <td class="text-center py-3 px-4">
-                                                    <span class="text-sm text-gray-600">涓婄骇 50% + 椤圭洰缁忕悊 50%</span>
-                                                </td>
-                                                <td class="text-center py-3 px-4">
-                                                    <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-sm">姝ｅ父</span>
-                                                </td>
-                                                <td class="text-center py-3 px-4">
-                                                    <button class="text-blue-600 hover:text-blue-700 text-sm mr-2">缂栬緫</button>
-                                                    <button class="text-red-600 hover:text-red-700 text-sm">鍒犻櫎</button>
-                                                </td>
-                                            </tr>
-                                            <tr class="border-b hover:bg-gray-50">
-                                                <td class="py-3 px-4">
-                                                    <div class="flex items-center space-x-2">
-                                                        <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                                                            <i class="fas fa-user text-green-600 text-sm"></i>
-                                                        </div>
-                                                        <span class="text-gray-800">闄堥潤</span>
-                                                    </div>
-                                                </td>
-                                                <td class="py-3 px-4 text-gray-600">娴嬭瘯宸ョ▼甯?/td>
-                                                <td class="text-center py-3 px-4">
-                                                    <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">璧垫晱</span>
-                                                </td>
-                                                <td class="text-center py-3 px-4">
-                                                    <span class="text-gray-400 text-sm">-</span>
-                                                </td>
-                                                <td class="text-center py-3 px-4">
-                                                    <span class="text-sm text-gray-600">鐩存帴涓婄骇 100%</span>
-                                                </td>
-                                                <td class="text-center py-3 px-4">
-                                                    <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-sm">姝ｅ父</span>
-                                                </td>
-                                                <td class="text-center py-3 px-4">
-                                                    <button class="text-blue-600 hover:text-blue-700 text-sm mr-2">缂栬緫</button>
-                                                    <button class="text-red-600 hover:text-red-700 text-sm">鍒犻櫎</button>
-                                                </td>
-                                            </tr>
-                                            <tr class="border-b hover:bg-gray-50">
-                                                <td class="py-3 px-4">
-                                                    <div class="flex items-center space-x-2">
-                                                        <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-                                                            <i class="fas fa-user text-orange-600 text-sm"></i>
-                                                        </div>
-                                                        <span class="text-gray-800">寮犲織寮?/span>
-                                                    </div>
-                                                </td>
-                                                <td class="py-3 px-4 text-gray-600">鎶€鏈富绠?/td>
-                                                <td class="text-center py-3 px-4">
-                                                    <span class="px-2 py-1 bg-orange-100 text-orange-700 rounded text-sm">闄堝織鍒?/span>
-                                                </td>
-                                                <td class="text-center py-3 px-4">
-                                                    <span class="text-gray-400 text-sm">-</span>
-                                                </td>
-                                                <td class="text-center py-3 px-4">
-                                                    <span class="text-sm text-gray-600">閮ㄩ棬缁忕悊 100%</span>
-                                                </td>
-                                                <td class="text-center py-3 px-4">
-                                                    <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-sm">姝ｅ父</span>
-                                                </td>
-                                                <td class="text-center py-3 px-4">
-                                                    <button class="text-blue-600 hover:text-blue-700 text-sm mr-2">缂栬緫</button>
-                                                    <button class="text-red-600 hover:text-red-700 text-sm">鍒犻櫎</button>
-                                                </td>
-                                            </tr>
-                                            <tr class="border-b hover:bg-gray-50">
-                                                <td class="py-3 px-4">
-                                                    <div class="flex items-center space-x-2">
-                                                        <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
-                                                            <i class="fas fa-user-exclamation text-red-600 text-sm"></i>
-                                                        </div>
-                                                        <span class="text-gray-800">鍛ㄨ姵</span>
-                                                    </div>
-                                                </td>
-                                                <td class="py-3 px-4 text-gray-600">杞欢宸ョ▼甯?/td>
-                                                <td class="text-center py-3 px-4">
-                                                    <span class="text-gray-400 text-sm">鏈厤缃?/span>
-                                                </td>
-                                                <td class="text-center py-3 px-4">
-                                                    <span class="text-gray-400 text-sm">鏈厤缃?/span>
-                                                </td>
-                                                <td class="text-center py-3 px-4">
-                                                    <span class="text-sm text-orange-600">寰呴厤缃?/span>
-                                                </td>
-                                                <td class="text-center py-3 px-4">
-                                                    <span class="px-2 py-1 bg-orange-100 text-orange-700 rounded text-sm">寰呴厤缃?/span>
-                                                </td>
-                                                <td class="text-center py-3 px-4">
-                                                    <button class="text-blue-600 hover:text-blue-700 text-sm mr-2">閰嶇疆</button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-
-                            <!-- 鑰冩牳鍏崇郴璇存槑 -->
-                            <div class="bg-white rounded-lg shadow p-6">
-                                <h3 class="text-lg font-semibold text-gray-800 mb-4">鑰冩牳鍏崇郴璇存槑</h3>
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div class="border rounded-lg p-4">
-                                        <h4 class="font-medium text-blue-700 mb-2"><i class="fas fa-info-circle mr-2"></i>鏉冮噸瑙勫垯</h4>
-                                        <ul class="text-sm text-gray-600 space-y-1">
-                                            <li>鈥?鏅€氬憳宸ワ細鐩存帴涓婄骇 100% 鎴?涓婄骇 50% + 椤圭洰缁忕悊 50%</li>
-                                            <li>鈥?鎶€鏈富绠★細閮ㄩ棬缁忕悊 100%</li>
-                                            <li>鈥?閮ㄩ棬缁忕悊锛氬垎绠￠瀵?鎬荤粡鐞?100%</li>
-                                        </ul>
-                                    </div>
-                                    <div class="border rounded-lg p-4">
-                                        <h4 class="font-medium text-green-700 mb-2"><i class="fas fa-check-circle mr-2"></i>閰嶇疆瑕佹眰</h4>
-                                        <ul class="text-sm text-gray-600 space-y-1">
-                                            <li>鈥?姣忎釜鍛樺伐蹇呴』閰嶇疆鐩存帴涓婄骇</li>
-                                            <li>鈥?椤圭洰鎴愬憳闇€閰嶇疆椤圭洰缁忕悊</li>
-                                            <li>鈥?鑰冩牳鍛ㄦ湡寮€濮嬪墠瀹屾垚閰嶇疆</li>
-                                        </ul>
-                                    </div>
-                                </div>
+                    <div class="col-span-2">
+                        <div class="bg-white rounded-lg shadow">
+                            <div class="p-4 border-b"><h3 class="text-lg font-semibold text-gray-800">研发中心 - 考核关系配置</h3></div>
+                            <div class="p-4">
+                                <table class="w-full">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">被考核人</th>
+                                            <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">岗位</th>
+                                            <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">直接上级</th>
+                                            <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">考核权重</th>
+                                            <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b"><td class="py-3 px-4">李晓明</td><td class="text-gray-600">高级软件工程师</td><td class="text-center"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">张志强</span></td><td class="text-center text-sm text-gray-600">100%</td><td class="text-center"><button class="text-blue-600 text-sm">编辑</button></td></tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -374,140 +82,24 @@
             </main>
         </div>
     </div>
-    <!-- 鏂板閮ㄩ棬寮圭獥 -->
-    <div id="addDeptModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-        <div class="bg-white rounded-lg shadow-xl w-96">
-            <div class="flex justify-between items-center p-4 border-b">
-                <h3 class="text-lg font-semibold text-gray-800">鏂板閮ㄩ棬</h3>
-                <button onclick="hideAddModal()" class="text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
+    <div id="addModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg shadow-xl w-96 p-6">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">新增部门</h3>
+            <div class="space-y-4">
+                <div><label class="block text-sm text-gray-700 mb-2">部门名称</label><input type="text" id="deptName" class="w-full border rounded-lg px-4 py-2"></div>
             </div>
-            <div class="p-4">
-                <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">閮ㄩ棬鍚嶇О</label>
-                    <input type="text" id="addDeptName" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500" placeholder="璇疯緭鍏ラ儴闂ㄥ悕绉?>
-                </div>
-                <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">涓婄骇閮ㄩ棬</label>
-                    <select id="addParentDept" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500">
-                        <option value="">鏃狅紙浣滀负椤剁骇閮ㄩ棬锛?/option>
-                        <option value="1">鐮斿彂涓績</option>
-                        <option value="2">寤烘ā绠楅噺閮?/option>
-                        <option value="3">骞冲彴閮?/option>
-                        <option value="4">钀ラ攢涓績</option>
-                        <option value="5">璐㈠姟閮?/option>
-                        <option value="6">浜哄姏璧勬簮閮?/option>
-                        <option value="7">淇℃伅涓績</option>
-                        <option value="8">鎬荤粡鍔?/option>
-                    </select>
-                </div>
-                <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">閮ㄩ棬璐熻矗浜?/label>
-                    <input type="text" id="addDeptHead" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500" placeholder="璇疯緭鍏ヨ礋璐ｄ汉濮撳悕">
-                </div>
-                <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">澶囨敞</label>
-                    <textarea id="addDeptNote" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500" rows="3" placeholder="璇疯緭鍏ュ娉ㄤ俊鎭?></textarea>
-                </div>
-            </div>
-            <div class="flex justify-end space-x-3 p-4 border-t">
-                <button onclick="hideAddModal()" class="px-4 py-2 border rounded-lg text-gray-600 hover:bg-gray-50">鍙栨秷</button>
-                <button onclick="addDept()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">纭畾</button>
+            <div class="flex justify-end gap-3 mt-6">
+                <button class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg" onclick="hideAddModal()">取消</button>
+                <button class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700" onclick="addDept()">确定</button>
             </div>
         </div>
     </div>
-
-    <!-- 缂栬緫閮ㄩ棬寮圭獥 -->
-    <div id="editDeptModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-        <div class="bg-white rounded-lg shadow-xl w-96">
-            <div class="flex justify-between items-center p-4 border-b">
-                <h3 class="text-lg font-semibold text-gray-800">缂栬緫閮ㄩ棬</h3>
-                <button onclick="hideEditModal()" class="text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="p-4">
-                <input type="hidden" id="editDeptId">
-                <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">閮ㄩ棬鍚嶇О</label>
-                    <input type="text" id="editDeptName" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500" placeholder="璇疯緭鍏ラ儴闂ㄥ悕绉?>
-                </div>
-                <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">涓婄骇閮ㄩ棬</label>
-                    <select id="editParentDept" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500">
-                        <option value="">鏃狅紙浣滀负椤剁骇閮ㄩ棬锛?/option>
-                        <option value="1">鐮斿彂涓績</option>
-                        <option value="2">寤烘ā绠楅噺閮?/option>
-                        <option value="3">骞冲彴閮?/option>
-                        <option value="4">钀ラ攢涓績</option>
-                        <option value="5">璐㈠姟閮?/option>
-                        <option value="6">浜哄姏璧勬簮閮?/option>
-                        <option value="7">淇℃伅涓績</option>
-                        <option value="8">鎬荤粡鍔?/option>
-                    </select>
-                </div>
-                <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">閮ㄩ棬璐熻矗浜?/label>
-                    <input type="text" id="editDeptHead" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500" placeholder="璇疯緭鍏ヨ礋璐ｄ汉濮撳悕">
-                </div>
-                <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">澶囨敞</label>
-                    <textarea id="editDeptNote" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500" rows="3" placeholder="璇疯緭鍏ュ娉ㄤ俊鎭?></textarea>
-                </div>
-            </div>
-            <div class="flex justify-end space-x-3 p-4 border-t">
-                <button onclick="hideEditModal()" class="px-4 py-2 border rounded-lg text-gray-600 hover:bg-gray-50">鍙栨秷</button>
-                <button onclick="saveEditDept()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">淇濆瓨</button>
-            </div>
-        </div>
-    </div>
-
     <script>
-        function showAddModal() {
-            document.getElementById('addDeptModal').classList.remove('hidden');
-            document.getElementById('addDeptModal').classList.add('flex');
-            document.getElementById('addDeptName').value = '';
-            document.getElementById('addParentDept').value = '';
-            document.getElementById('addDeptHead').value = '';
-            document.getElementById('addDeptNote').value = '';
-        }
-        function hideAddModal() {
-            document.getElementById('addDeptModal').classList.add('hidden');
-            document.getElementById('addDeptModal').classList.remove('flex');
-        }
-        function addDept() {
-            const deptName = document.getElementById('addDeptName').value.trim();
-            if (!deptName) { alert('璇疯緭鍏ラ儴闂ㄥ悕绉?); return; }
-            alert('閮ㄩ棬鏂板鎴愬姛锛?);
-            hideAddModal();
-        }
-        function editDept(deptId, deptName, parentDept, deptHead, deptNote) {
-            document.getElementById('editDeptId').value = deptId;
-            document.getElementById('editDeptName').value = deptName;
-            document.getElementById('editParentDept').value = parentDept || '';
-            document.getElementById('editDeptHead').value = deptHead || '';
-            document.getElementById('editDeptNote').value = deptNote || '';
-            document.getElementById('editDeptModal').classList.remove('hidden');
-            document.getElementById('editDeptModal').classList.add('flex');
-        }
-        function hideEditModal() {
-            document.getElementById('editDeptModal').classList.add('hidden');
-            document.getElementById('editDeptModal').classList.remove('flex');
-        }
-        function saveEditDept() {
-            const deptName = document.getElementById('editDeptName').value.trim();
-            if (!deptName) { alert('璇疯緭鍏ラ儴闂ㄥ悕绉?); return; }
-            alert('閮ㄩ棬淇濆瓨鎴愬姛锛?);
-            hideEditModal();
-        }
-        function deleteDept(deptId, deptName) {
-            if (confirm('纭畾瑕佸垹闄ら儴闂?"' + deptName + '" 鍚楋紵姝ゆ搷浣滀笉鍙仮澶嶏紒')) {
-                alert('閮ㄩ棬鍒犻櫎鎴愬姛锛?);
-            }
-        }
+        function showAddModal(){document.getElementById('addModal').classList.remove('hidden');}
+        function hideAddModal(){document.getElementById('addModal').classList.add('hidden');}
+        function addDept(){alert('新增部门：'+document.getElementById('deptName').value);hideAddModal();}
+        function editDept(name){alert('编辑部门：'+name);}
+        function deleteDept(name){if(confirm('确定删除'+name+'?'))alert('删除部门：'+name);}
     </script>
 </body>
 </html>
-
-
-
-
-
-
