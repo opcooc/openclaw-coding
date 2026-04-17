@@ -1,0 +1,11 @@
+subordinateSelector">
+        <button class="subordinate-card flex-1 bg-blue-50 border-2 border-blue-500 rounded-lg p-3 hover:bg-blue-100 transition-colors text-left" onclick="switchSubordinate(this, '李晓明', '高级软件工程师')" data-name="李晓明" data-role="高级软件工程师">
+            <div class="flex items-center">
+                <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-3">李</div>
+                <div>
+                    <p class="font-semibold text-gray-800">李晓明</p>
+                    <p class="text-xs text-gray-500">高级软件工程师</p>
+                </div>
+            </div>
+        </button>
+        <button class="subordinate-card flex-1 bg-gray-50 border-2 border-gray-200 rounded-lg p-3 hover:bg-gray-100 transition-colors text-left" 
