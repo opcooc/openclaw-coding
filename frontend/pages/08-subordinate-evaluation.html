@@ -49,55 +49,127 @@
 
                     <!-- 任务审核 Tab -->
                     <div id="auditTab" class="space-y-6">
-                        <div class="bg-white rounded-lg shadow p-6">
-                            <h3 class="text-lg font-semibold text-gray-800 mb-4">待审核任务（2026 年 3 月）</h3>
-                            <table class="w-full">
-                                <thead class="bg-gray-50">
-                                    <tr>
-                                        <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">被考核人</th>
-                                        <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">任务内容</th>
-                                        <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">交付成果</th>
-                                        <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">提交时间</th>
-                                        <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">状态</th>
-                                        <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">操作</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="border-b">
-                                        <td class="py-3 px-4 font-medium">李晓明</td>
-                                        <td class="py-3 px-4 text-gray-800">完成核心模块重构，提升系统性能 30%</td>
-                                        <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">代码 + 文档</span></td>
-                                        <td class="text-center py-3 px-4 text-gray-600">2026-03-28</td>
-                                        <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded text-sm">待审核</span></td>
-                                        <td class="text-center py-3 px-4">
-                                            <button class="bg-green-600 text-white px-4 py-1.5 rounded text-sm hover:bg-green-700 mr-2" onclick="auditTask(this, 'approved')">通过</button>
-                                            <button class="bg-red-600 text-white px-4 py-1.5 rounded text-sm hover:bg-red-700" onclick="auditTask(this, 'rejected')">驳回</button>
-                                        </td>
-                                    </tr>
-                                    <tr class="border-b">
-                                        <td class="py-3 px-4 font-medium">李晓明</td>
-                                        <td class="py-3 px-4 text-gray-800">主导技术方案设计，完成 3 次技术分享</td>
-                                        <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">PPT+ 录像</span></td>
-                                        <td class="text-center py-3 px-4 text-gray-600">2026-03-29</td>
-                                        <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded text-sm">待审核</span></td>
-                                        <td class="text-center py-3 px-4">
-                                            <button class="bg-green-600 text-white px-4 py-1.5 rounded text-sm hover:bg-green-700 mr-2" onclick="auditTask(this, 'approved')">通过</button>
-                                            <button class="bg-red-600 text-white px-4 py-1.5 rounded text-sm hover:bg-red-700" onclick="auditTask(this, 'rejected')">驳回</button>
-                                        </td>
-                                    </tr>
-                                    <tr class="border-b">
-                                        <td class="py-3 px-4 font-medium">王芳</td>
-                                        <td class="py-3 px-4 text-gray-800">完成 UI 组件库升级，支持主题切换</td>
-                                        <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">代码 + 演示</span></td>
-                                        <td class="text-center py-3 px-4 text-gray-600">2026-03-30</td>
-                                        <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded text-sm">待审核</span></td>
-                                        <td class="text-center py-3 px-4">
-                                            <button class="bg-green-600 text-white px-4 py-1.5 rounded text-sm hover:bg-green-700 mr-2" onclick="auditTask(this, 'approved')">通过</button>
-                                            <button class="bg-red-600 text-white px-4 py-1.5 rounded text-sm hover:bg-red-700" onclick="auditTask(this, 'rejected')">驳回</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <!-- 下属 1：李晓明 -->
+                        <div class="bg-white rounded-lg shadow">
+                            <div class="bg-gray-50 px-6 py-4 border-b">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-3">李</div>
+                                        <div>
+                                            <h3 class="text-lg font-semibold text-gray-800">李晓明</h3>
+                                            <p class="text-sm text-gray-500">高级软件工程师 | 研发中心</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm">待审核任务：3 个</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <table class="w-full">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">序号</th>
+                                            <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">任务内容</th>
+                                            <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">交付成果</th>
+                                            <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">提交时间</th>
+                                            <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">状态</th>
+                                            <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b">
+                                            <td class="py-3 px-4 text-gray-600">1</td>
+                                            <td class="py-3 px-4 text-gray-800">完成核心模块重构，提升系统性能 30%</td>
+                                            <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">代码 + 文档</span></td>
+                                            <td class="text-center py-3 px-4 text-gray-600">2026-03-28</td>
+                                            <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded text-sm">待审核</span></td>
+                                            <td class="text-center py-3 px-4">
+                                                <button class="bg-green-600 text-white px-4 py-1.5 rounded text-sm hover:bg-green-700 mr-2" onclick="auditTask(this, 'approved')">通过</button>
+                                                <button class="bg-red-600 text-white px-4 py-1.5 rounded text-sm hover:bg-red-700" onclick="auditTask(this, 'rejected')">驳回</button>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-b">
+                                            <td class="py-3 px-4 text-gray-600">2</td>
+                                            <td class="py-3 px-4 text-gray-800">主导技术方案设计，完成 3 次技术分享</td>
+                                            <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">PPT+ 录像</span></td>
+                                            <td class="text-center py-3 px-4 text-gray-600">2026-03-29</td>
+                                            <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded text-sm">待审核</span></td>
+                                            <td class="text-center py-3 px-4">
+                                                <button class="bg-green-600 text-white px-4 py-1.5 rounded text-sm hover:bg-green-700 mr-2" onclick="auditTask(this, 'approved')">通过</button>
+                                                <button class="bg-red-600 text-white px-4 py-1.5 rounded text-sm hover:bg-red-700" onclick="auditTask(this, 'rejected')">驳回</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-3 px-4 text-gray-600">3</td>
+                                            <td class="py-3 px-4 text-gray-800">按时交付项目，无重大延期</td>
+                                            <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">项目报告</span></td>
+                                            <td class="text-center py-3 px-4 text-gray-600">2026-03-30</td>
+                                            <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded text-sm">待审核</span></td>
+                                            <td class="text-center py-3 px-4">
+                                                <button class="bg-green-600 text-white px-4 py-1.5 rounded text-sm hover:bg-green-700 mr-2" onclick="auditTask(this, 'approved')">通过</button>
+                                                <button class="bg-red-600 text-white px-4 py-1.5 rounded text-sm hover:bg-red-700" onclick="auditTask(this, 'rejected')">驳回</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- 下属 2：王芳 -->
+                        <div class="bg-white rounded-lg shadow">
+                            <div class="bg-gray-50 px-6 py-4 border-b">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <div class="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-3">王</div>
+                                        <div>
+                                            <h3 class="text-lg font-semibold text-gray-800">王芳</h3>
+                                            <p class="text-sm text-gray-500">UI 设计师 | 用户体验部</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm">待审核任务：2 个</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <table class="w-full">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">序号</th>
+                                            <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">任务内容</th>
+                                            <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">交付成果</th>
+                                            <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">提交时间</th>
+                                            <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">状态</th>
+                                            <th class="text-center py-3 px-4 text-sm font-medium text-gray-700">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b">
+                                            <td class="py-3 px-4 text-gray-600">1</td>
+                                            <td class="py-3 px-4 text-gray-800">完成 UI 组件库升级，支持主题切换</td>
+                                            <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">代码 + 演示</span></td>
+                                            <td class="text-center py-3 px-4 text-gray-600">2026-03-30</td>
+                                            <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded text-sm">待审核</span></td>
+                                            <td class="text-center py-3 px-4">
+                                                <button class="bg-green-600 text-white px-4 py-1.5 rounded text-sm hover:bg-green-700 mr-2" onclick="auditTask(this, 'approved')">通过</button>
+                                                <button class="bg-red-600 text-white px-4 py-1.5 rounded text-sm hover:bg-red-700" onclick="auditTask(this, 'rejected')">驳回</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-3 px-4 text-gray-600">2</td>
+                                            <td class="py-3 px-4 text-gray-800">优化移动端交互体验，提升用户满意度</td>
+                                            <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">原型 + 报告</span></td>
+                                            <td class="text-center py-3 px-4 text-gray-600">2026-03-31</td>
+                                            <td class="text-center py-3 px-4"><span class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded text-sm">待审核</span></td>
+                                            <td class="text-center py-3 px-4">
+                                                <button class="bg-green-600 text-white px-4 py-1.5 rounded text-sm hover:bg-green-700 mr-2" onclick="auditTask(this, 'approved')">通过</button>
+                                                <button class="bg-red-600 text-white px-4 py-1.5 rounded text-sm hover:bg-red-700" onclick="auditTask(this, 'rejected')">驳回</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
 
@@ -269,7 +341,21 @@
                 statusCell.innerHTML = '<span class="px-2 py-1 bg-red-100 text-red-700 rounded text-sm">已驳回</span>';
             }
             actionCell.innerHTML = '<span class="text-gray-400 text-sm">已处理</span>';
-            alert('任务已' + (action === 'approved' ? '通过' : '驳回'));
+            
+            // 更新待审核任务数量
+            updateAuditCount(btn.closest('.bg-white'));
+        }
+        
+        function updateAuditCount(card) {
+            const header = card.querySelector('.bg-gray-50');
+            const countBadge = header.querySelector('.bg-yellow-100');
+            const pendingCount = card.querySelectorAll('.bg-yellow-100.text-yellow-700').length;
+            if (countBadge && pendingCount > 0) {
+                countBadge.textContent = '待审核任务：' + pendingCount + '个';
+            } else if (countBadge) {
+                countBadge.className = 'px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm';
+                countBadge.textContent = '全部已审核';
+            }
         }
         
         function calculateTotal() {
@@ -285,7 +371,6 @@
             document.getElementById('totalScore').textContent = total.toFixed(1);
             document.getElementById('taskTotal').textContent = taskTotal.toFixed(1);
             
-            // 等级评定
             const grade = total >= 90 ? 'A' : total >= 80 ? 'B' : total >= 70 ? 'C' : 'D';
             document.getElementById('gradeLevel').textContent = grade;
         }
@@ -301,7 +386,6 @@
                 managerTotal += parseFloat(input.value) || 0;
             });
             
-            // 双考评人 50%+50% 加权
             const abilityTotal = (supervisorTotal * 0.5) + (managerTotal * 0.5);
             document.getElementById('abilityTotal').textContent = abilityTotal.toFixed(1);
             calculateTotal();
