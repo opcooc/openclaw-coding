@@ -3,263 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>工作台 - 绩效考核系统</title>
+    <title>工作台 - 华规绩效考评系统</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-        body { font-family: 'Inter', 'Microsoft YaHei', sans-serif; }
-        .sidebar-item-active { background-color: #eff6ff; color: #2563eb; border-right: 4px solid #2563eb; }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-slate-50 flex">
-
-    <!-- 1. 侧边栏导航 -->
-    <aside class="w-64 bg-white h-screen sticky top-0 border-r border-slate-200 flex flex-col shrink-0">
-        <div class="p-6 border-b border-slate-100 flex items-center space-x-3">
-            <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <i class="fas fa-chart-line text-white"></i>
-            </div>
-            <span class="font-bold text-xl text-slate-800 tracking-tight">绩效考评系统</span>
-        </div>
-        
-        <nav class="flex-1 py-6 space-y-1">
-            <a href="#" class="sidebar-item-active flex items-center px-6 py-3 transition-colors">
-                <i class="fas fa-th-large w-5 mr-3"></i>
-                <span class="font-medium">工作台</span>
-            </a>
-            <a href="#" class="flex items-center px-6 py-3 text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition-colors">
-                <i class="fas fa-tasks w-5 mr-3"></i>
-                <span class="font-medium">考核管理</span>
-            </a>
-            <a href="#" class="flex items-center px-6 py-3 text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition-colors">
-                <i class="fas fa-edit w-5 mr-3"></i>
-                <span class="font-medium">任务填报</span>
-            </a>
-            <a href="#" class="flex items-center px-6 py-3 text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition-colors">
-                <i class="fas fa-search w-5 mr-3"></i>
-                <span class="font-medium">成绩查询</span>
-            </a>
-            <a href="#" class="flex items-center px-6 py-3 text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition-colors">
-                <i class="fas fa-file-alt w-5 mr-3"></i>
-                <span class="font-medium">报表中心</span>
-            </a>
-        </nav>
-
-        <div class="p-4 border-t border-slate-100">
-            <div class="bg-blue-50 rounded-xl p-4 text-center">
-                <p class="text-xs text-blue-600 font-semibold mb-1">当前版本</p>
-                <p class="text-xs text-blue-400 uppercase tracking-widest font-bold">v2.4.0 Standard</p>
-            </div>
-        </div>
-    </aside>
-
-    <div class="flex-1 flex flex-col min-h-screen">
-        <!-- 2. 顶部栏 -->
-        <header class="h-16 bg-white border-b border-slate-200 px-8 flex items-center justify-between sticky top-0 z-10">
-            <div class="flex items-center space-x-2 text-slate-500 text-sm">
-                <span>首页</span>
-                <i class="fas fa-chevron-right text-[10px]"></i>
-                <span class="text-slate-900 font-medium">工作台</span>
-            </div>
-            
-            <div class="flex items-center space-x-6">
-                <div class="relative">
-                    <button class="text-slate-400 hover:text-slate-600">
-                        <i class="fas fa-bell text-lg"></i>
-                        <span class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 border-2 border-white rounded-full text-[10px] text-white flex items-center justify-center">3</span>
-                    </button>
-                </div>
-                <div class="flex items-center space-x-3 pl-6 border-l border-slate-200">
-                    <div class="text-right">
-                        <p class="text-sm font-semibold text-slate-800">张三</p>
-                        <p class="text-xs text-slate-500">人力资源部 · 经理</p>
+<body class="bg-gray-50 min-h-screen">
+    <div class="flex h-screen">
+        <!-- 侧边栏 - 蓝色主题 -->
+        <aside class="w-64 bg-blue-700 text-white flex-shrink-0">
+            <div class="p-6 border-b border-blue-600">
+                <!-- LOGO -->
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                        <span class="text-blue-700 font-bold text-xl">H</span>
                     </div>
-                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="User" class="w-9 h-9 rounded-full bg-slate-100 ring-2 ring-slate-50">
-                    <button class="ml-4 text-slate-400 hover:text-red-500 transition-colors" title="退出系统">
-                        <i class="fas fa-sign-out-alt text-lg"></i>
-                    </button>
-                </div>
-            </div>
-        </header>
-
-        <!-- 主内容容器 -->
-        <main class="p-8 space-y-8 max-w-7xl">
-            
-            <!-- 欢迎与日期 -->
-            <div class="flex items-end justify-between">
-                <div>
-                    <h1 class="text-2xl font-bold text-slate-900 tracking-tight">早上好，张三</h1>
-                    <p class="text-slate-500 mt-1 italic">“追求卓越，挑战极限，每一天都是新的跨越。”</p>
-                </div>
-                <div class="bg-white px-4 py-2 rounded-lg border border-slate-200 text-sm text-slate-600 shadow-sm">
-                    <i class="far fa-calendar-alt mr-2 text-blue-500"></i> 2026年4月16日 星期四
-                </div>
-            </div>
-
-            <!-- 3. 待办任务卡片 -->
-            <section>
-                <div class="flex items-center justify-between mb-4">
-                    <h2 class="text-lg font-bold text-slate-800 flex items-center">
-                        <span class="w-1.5 h-6 bg-blue-600 rounded-full mr-3"></span>
-                        待办任务
-                    </h2>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- 待填报 -->
-                    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition-shadow group">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600 group-hover:scale-110 transition-transform">
-                                <i class="fas fa-file-pen text-xl"></i>
-                            </div>
-                            <span class="text-2xl font-bold text-slate-800 tracking-tighter">02</span>
-                        </div>
-                        <h3 class="text-base font-bold text-slate-800 mb-1">待填报</h3>
-                        <p class="text-sm text-slate-500 mb-4">包含 4 月月度目标及完成反馈</p>
-                        <button class="w-full py-2 bg-slate-50 text-slate-600 rounded-lg text-sm font-semibold hover:bg-amber-500 hover:text-white transition-all">
-                            立即处理
-                        </button>
-                    </div>
-
-                    <!-- 待审核 -->
-                    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition-shadow group">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform">
-                                <i class="fas fa-user-check text-xl"></i>
-                            </div>
-                            <span class="text-2xl font-bold text-slate-800 tracking-tighter">05</span>
-                        </div>
-                        <h3 class="text-base font-bold text-slate-800 mb-1">待审核</h3>
-                        <p class="text-sm text-slate-500 mb-4">下属月度考核计划待确认</p>
-                        <button class="w-full py-2 bg-slate-50 text-slate-600 rounded-lg text-sm font-semibold hover:bg-blue-600 hover:text-white transition-all">
-                            立即处理
-                        </button>
-                    </div>
-
-                    <!-- 待打分 -->
-                    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition-shadow group">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-purple-600 group-hover:scale-110 transition-transform">
-                                <i class="fas fa-star-half-alt text-xl"></i>
-                            </div>
-                            <span class="text-2xl font-bold text-slate-800 tracking-tighter">12</span>
-                        </div>
-                        <h3 class="text-base font-bold text-slate-800 mb-1">待打分</h3>
-                        <p class="text-sm text-slate-500 mb-4">第一季度绩效评估进入打分阶段</p>
-                        <button class="w-full py-2 bg-slate-50 text-slate-600 rounded-lg text-sm font-semibold hover:bg-purple-600 hover:text-white transition-all">
-                            立即处理
-                        </button>
+                    <div>
+                        <h1 class="text-lg font-bold">华规软件</h1>
+                        <p class="text-xs text-blue-200">绩效考评系统</p>
                     </div>
                 </div>
-            </section>
+            </div>
+            <nav class="mt-6">
+                <a href="02-workbench.html" class="flex items-center px-6 py-3 bg-blue-600 border-l-4 border-white">
+                    <i class="fas fa-home w-6"></i>
+                    <span>工作台</span>
+                </a>
+                <a href="03-task-submission.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors">
+                    <i class="fas fa-edit w-6"></i>
+                    <span>任务填报</span>
+                </a>
+                <a href="04-supervisor-rating.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors">
+                    <i class="fas fa-star w-6"></i>
+                    <span>上级打分</span>
+                </a>
+                <a href="05-score-query.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors">
+                    <i class="fas fa-chart-line w-6"></i>
+                    <span>成绩查询</span>
+                </a>
+                <a href="06-admin-config.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors">
+                    <i class="fas fa-cog w-6"></i>
+                    <span>系统配置</span>
+                </a>
+                <a href="07-report-analysis.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors">
+                    <i class="fas fa-file-alt w-6"></i>
+                    <span>报表中心</span>
+                </a>
+            </nav>
+        </aside>
 
-            <!-- 4. 考核进度条 -->
-            <section class="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm">
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                    <div class="flex-1">
-                        <div class="flex items-center justify-between mb-4">
-                            <h2 class="text-lg font-bold text-slate-800">2026年Q2 季度考核进度</h2>
-                            <span class="text-sm font-bold text-blue-600">65%</span>
+        <!-- 主内容区 -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- 顶部导航栏 -->
+            <header class="bg-white shadow-sm border-b px-6 py-4">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-2xl font-semibold text-gray-800">工作台</h2>
+                    <div class="flex items-center space-x-4">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-medium">张</div>
+                            <span class="text-gray-700">张三</span>
                         </div>
-                        <div class="h-3 w-full bg-slate-100 rounded-full overflow-hidden">
-                            <div class="h-full bg-gradient-to-r from-blue-400 to-blue-600 rounded-full" style="width: 65%"></div>
-                        </div>
-                        <div class="mt-6 flex justify-between">
-                            <div class="text-center">
-                                <div class="w-8 h-8 rounded-full bg-green-500 text-white flex items-center justify-center text-xs mx-auto mb-2">
-                                    <i class="fas fa-check"></i>
+                        <a href="01-login.html" class="text-gray-500 hover:text-red-600 transition-colors">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span class="ml-1">退出</span>
+                        </a>
+                    </div>
+                </div>
+            </header>
+
+            <!-- 内容区 -->
+            <main class="flex-1 overflow-y-auto p-6">
+                <div class="grid grid-cols-3 gap-6">
+                    <!-- 左侧主区域 (2/3) -->
+                    <div class="col-span-2 space-y-6">
+                        <!-- 待办任务卡片 - 紧凑布局 -->
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-yellow-500">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-gray-500 text-xs">待填报</p>
+                                        <p class="text-2xl font-bold text-gray-800 mt-1">5</p>
+                                    </div>
+                                    <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-edit text-yellow-600 text-lg"></i>
+                                    </div>
                                 </div>
-                                <p class="text-xs font-semibold text-slate-700">计划下发</p>
                             </div>
-                            <div class="w-full h-px bg-slate-100 mt-4 mx-2"></div>
-                            <div class="text-center">
-                                <div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs mx-auto mb-2">2</div>
-                                <p class="text-xs font-semibold text-slate-700">自评反馈</p>
+                            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-gray-500 text-xs">待审核</p>
+                                        <p class="text-2xl font-bold text-gray-800 mt-1">3</p>
+                                    </div>
+                                    <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-check-circle text-blue-600 text-lg"></i>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="w-full h-px bg-slate-100 mt-4 mx-2"></div>
-                            <div class="text-center">
-                                <div class="w-8 h-8 rounded-full bg-slate-200 text-slate-400 flex items-center justify-center text-xs mx-auto mb-2">3</div>
-                                <p class="text-xs font-semibold text-slate-400">主管评议</p>
+                            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-green-500">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-gray-500 text-xs">待打分</p>
+                                        <p class="text-2xl font-bold text-gray-800 mt-1">8</p>
+                                    </div>
+                                    <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-star text-green-600 text-lg"></i>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="w-full h-px bg-slate-100 mt-4 mx-2"></div>
-                            <div class="text-center">
-                                <div class="w-8 h-8 rounded-full bg-slate-200 text-slate-400 flex items-center justify-center text-xs mx-auto mb-2">4</div>
-                                <p class="text-xs font-semibold text-slate-400">结果公示</p>
+                        </div>
+
+                        <!-- 快捷入口 - 紧凑布局 -->
+                        <div class="bg-white rounded-lg shadow p-4">
+                            <h3 class="text-sm font-semibold text-gray-700 mb-3">快捷入口</h3>
+                            <div class="grid grid-cols-4 gap-3">
+                                <button class="flex flex-col items-center p-3 border rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors">
+                                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mb-2">
+                                        <i class="fas fa-plus text-blue-600 text-sm"></i>
+                                    </div>
+                                    <span class="text-xs text-gray-700">新建考核</span>
+                                </button>
+                                <button class="flex flex-col items-center p-3 border rounded-lg hover:bg-green-50 hover:border-green-300 transition-colors">
+                                    <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mb-2">
+                                        <i class="fas fa-upload text-green-600 text-sm"></i>
+                                    </div>
+                                    <span class="text-xs text-gray-700">批量导入</span>
+                                </button>
+                                <button class="flex flex-col items-center p-3 border rounded-lg hover:bg-purple-50 hover:border-purple-300 transition-colors">
+                                    <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center mb-2">
+                                        <i class="fas fa-download text-purple-600 text-sm"></i>
+                                    </div>
+                                    <span class="text-xs text-gray-700">导出报表</span>
+                                </button>
+                                <button class="flex flex-col items-center p-3 border rounded-lg hover:bg-orange-50 hover:border-orange-300 transition-colors">
+                                    <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center mb-2">
+                                        <i class="fas fa-bell text-orange-600 text-sm"></i>
+                                    </div>
+                                    <span class="text-xs text-gray-700">消息通知</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 考核进度 -->
+                        <div class="bg-white rounded-lg shadow p-4">
+                            <h3 class="text-sm font-semibold text-gray-700 mb-3">考核进度</h3>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-sm text-gray-700">2026 年第一季度考核</span>
+                                    <span class="text-xs text-gray-500">截止：2026-04-30</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 65%"></div>
+                                </div>
+                                <p class="text-xs text-gray-500 mt-1">当前进度：65%</p>
                             </div>
                         </div>
                     </div>
-                    <div class="md:w-px md:h-24 bg-slate-100 hidden md:block"></div>
-                    <div class="text-center px-8">
-                        <p class="text-xs text-slate-400 uppercase font-bold tracking-widest mb-1">距离结束</p>
-                        <p class="text-3xl font-black text-slate-800 tracking-tighter">14 <span class="text-sm font-medium text-slate-500 uppercase">Days</span></p>
+
+                    <!-- 右侧区域 (1/3) - 通知公告独占 -->
+                    <div class="col-span-1">
+                        <div class="bg-white rounded-lg shadow p-4 h-full">
+                            <h3 class="text-sm font-semibold text-gray-700 mb-3 flex items-center">
+                                <i class="fas fa-bullhorn text-blue-600 mr-2"></i>
+                                通知公告
+                            </h3>
+                            <div class="space-y-3">
+                                <div class="border-l-4 border-red-500 pl-3 py-2 bg-red-50 rounded-r">
+                                    <p class="text-sm font-medium text-gray-800">关于完成 Q1 绩效考核的通知</p>
+                                    <p class="text-xs text-gray-500 mt-1">2026-04-15</p>
+                                </div>
+                                <div class="border-l-4 border-blue-500 pl-3 py-2 bg-blue-50 rounded-r">
+                                    <p class="text-sm font-medium text-gray-800">系统维护公告</p>
+                                    <p class="text-xs text-gray-500 mt-1">2026-04-10</p>
+                                </div>
+                                <div class="border-l-4 border-green-500 pl-3 py-2 bg-green-50 rounded-r">
+                                    <p class="text-sm font-medium text-gray-800">绩效考核制度更新说明</p>
+                                    <p class="text-xs text-gray-500 mt-1">2026-04-05</p>
+                                </div>
+                                <div class="border-l-4 border-purple-500 pl-3 py-2 bg-purple-50 rounded-r">
+                                    <p class="text-sm font-medium text-gray-800">新员工培训安排</p>
+                                    <p class="text-xs text-gray-500 mt-1">2026-04-01</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </section>
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <!-- 5. 快捷入口 -->
-                <section class="lg:col-span-2">
-                    <h2 class="text-lg font-bold text-slate-800 mb-4">快捷入口</h2>
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                        <a href="#" class="bg-white p-5 rounded-2xl border border-slate-200 flex flex-col items-center hover:border-blue-400 hover:shadow-lg hover:shadow-blue-50/50 transition-all">
-                            <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 mb-3">
-                                <i class="fas fa-plus text-lg"></i>
-                            </div>
-                            <span class="text-sm font-semibold text-slate-700 text-center">发起考核</span>
-                        </a>
-                        <a href="#" class="bg-white p-5 rounded-2xl border border-slate-200 flex flex-col items-center hover:border-blue-400 hover:shadow-lg hover:shadow-blue-50/50 transition-all">
-                            <div class="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 mb-3">
-                                <i class="fas fa-file-export text-lg"></i>
-                            </div>
-                            <span class="text-sm font-semibold text-slate-700 text-center">导出报表</span>
-                        </a>
-                        <a href="#" class="bg-white p-5 rounded-2xl border border-slate-200 flex flex-col items-center hover:border-blue-400 hover:shadow-lg hover:shadow-blue-50/50 transition-all">
-                            <div class="w-12 h-12 bg-indigo-50 rounded-full flex items-center justify-center text-indigo-600 mb-3">
-                                <i class="fas fa-users-cog text-lg"></i>
-                            </div>
-                            <span class="text-sm font-semibold text-slate-700 text-center">团队管理</span>
-                        </a>
-                        <a href="#" class="bg-white p-5 rounded-2xl border border-slate-200 flex flex-col items-center hover:border-blue-400 hover:shadow-lg hover:shadow-blue-50/50 transition-all">
-                            <div class="w-12 h-12 bg-rose-50 rounded-full flex items-center justify-center text-rose-600 mb-3">
-                                <i class="fas fa-gear text-lg"></i>
-                            </div>
-                            <span class="text-sm font-semibold text-slate-700 text-center">系统配置</span>
-                        </a>
-                    </div>
-                </section>
-
-                <!-- 6. 通知公告 -->
-                <section>
-                    <div class="flex items-center justify-between mb-4">
-                        <h2 class="text-lg font-bold text-slate-800">通知公告</h2>
-                        <button class="text-blue-600 text-xs font-bold hover:underline">查看全部</button>
-                    </div>
-                    <div class="bg-white rounded-2xl border border-slate-200 divide-y divide-slate-100 shadow-sm">
-                        <div class="p-4 hover:bg-slate-50 transition-colors cursor-pointer group">
-                            <div class="flex items-center mb-1">
-                                <span class="w-2 h-2 rounded-full bg-red-500 mr-2"></span>
-                                <h4 class="text-sm font-bold text-slate-800 flex-1 truncate group-hover:text-blue-600">关于2026年第二季度考核全面启动的通知</h4>
-                            </div>
-                            <p class="text-[10px] text-slate-400 pl-4 font-medium uppercase tracking-wider">刚刚发布 · 行政部</p>
-                        </div>
-                        <div class="p-4 hover:bg-slate-50 transition-colors cursor-pointer group">
-                            <div class="flex items-center mb-1">
-                                <span class="w-2 h-2 rounded-full bg-amber-500 mr-2"></span>
-                                <h4 class="text-sm font-bold text-slate-800 flex-1 truncate group-hover:text-blue-600">系统维护：本周六凌晨2点停机更新</h4>
-                            </div>
-                            <p class="text-[10px] text-slate-400 pl-4 font-medium uppercase tracking-wider">3小时前 · 技术部</p>
-                        </div>
-                        <div class="p-4 hover:bg-slate-50 transition-colors cursor-pointer group">
-                            <div class="flex items-center mb-1">
-                                <span class="w-2 h-2 rounded-full bg-slate-300 mr-2"></span>
-                                <h4 class="text-sm font-bold text-slate-800 flex-1 truncate group-hover:text-blue-600">绩效申诉处理流程优化说明文档</h4>
-                            </div>
-                            <p class="text-[10px] text-slate-400 pl-4 font-medium uppercase tracking-wider">昨天 · 人事部</p>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </main>
+            </main>
+        </div>
     </div>
 </body>
 </html>

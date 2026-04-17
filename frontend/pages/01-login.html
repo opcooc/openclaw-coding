@@ -3,48 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>登录 - 华规绩效考核系统</title>
+    <title>登录 - 华规绩效考评系统</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            background-color: #f3f4f6;
-        }
-    </style>
 </head>
-<body class="flex items-center justify-center min-h-screen">
-    <div class="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
-        <div class="text-center">
-            <h1 class="text-3xl font-bold text-gray-900 mb-2">华规绩效考核系统</h1>
-            <p class="text-sm text-gray-600">请登录您的账号</p>
+<body class="bg-gradient-to-br from-blue-600 to-blue-800 min-h-screen flex items-center justify-center">
+    <div class="bg-white rounded-lg shadow-2xl p-8 w-full max-w-md">
+        <!-- LOGO -->
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-700 rounded-xl mb-4">
+                <span class="text-white font-bold text-3xl">H</span>
+            </div>
+            <h1 class="text-2xl font-bold text-gray-800">华规软件</h1>
+            <p class="text-gray-500 mt-2">绩效考评系统</p>
         </div>
-        <form class="space-y-4" onsubmit="event.preventDefault(); window.location.href='02-workbench.html';">
+
+        <!-- 登录表单 -->
+        <form class="space-y-6">
             <div>
-                <label for="username" class="block text-sm font-medium text-gray-700">用户名</label>
-                <input type="text" id="username" name="username" required 
-                    class="w-full px-4 py-2 mt-1 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 outline-none transition duration-150">
+                <label class="block text-sm font-medium text-gray-700 mb-2">账号</label>
+                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="请输入账号">
             </div>
             <div>
-                <label for="password" class="block text-sm font-medium text-gray-700">密码</label>
-                <input type="password" id="password" name="password" required 
-                    class="w-full px-4 py-2 mt-1 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 outline-none transition duration-150">
+                <label class="block text-sm font-medium text-gray-700 mb-2">密码</label>
+                <input type="password" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="请输入密码">
             </div>
             <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                    <input type="checkbox" id="remember" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
-                    <label for="remember" class="ml-2 text-sm text-gray-600">记住我</label>
-                </div>
-                <a href="#" class="text-sm text-blue-600 hover:underline">忘记密码？</a>
+                <label class="flex items-center">
+                    <input type="checkbox" class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                    <span class="ml-2 text-sm text-gray-600">记住我</span>
+                </label>
+                <a href="#" class="text-sm text-blue-600 hover:text-blue-700">忘记密码？</a>
             </div>
-            <div>
-                <button type="submit" 
-                    class="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md shadow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150">
-                    立即登录
-                </button>
-            </div>
+            <a href="02-workbench.html" class="block w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors text-center">
+                登录
+            </a>
         </form>
-        <div class="text-center text-xs text-gray-500 pt-4">
-            &copy; 2026 华规软件 版权所有
-        </div>
+
+        <p class="text-center text-gray-400 text-sm mt-8">© 2026 华规软件 版权所有</p>
     </div>
 </body>
 </html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>系统配置 - 华规绩效考评系统</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="flex h-screen">
+        <aside class="w-64 bg-blue-700 text-white flex-shrink-0">
+            <div class="p-6 border-b border-blue-600">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center"><span class="text-blue-700 font-bold text-xl">H</span></div>
+                    <div><h1 class="text-lg font-bold">华规软件</h1><p class="text-xs text-blue-200">绩效考评系统</p></div>
+                </div>
+            </div>
+            <nav class="mt-6">
+                <a href="02-workbench.html" class="flex items-center px-6 py-3 hover:bg-blue-600"><i class="fas fa-home w-6"></i><span>工作台</span></a>
+                <a href="03-task-submission.html" class="flex items-center px-6 py-3 hover:bg-blue-600"><i class="fas fa-edit w-6"></i><span>任务填报</span></a>
+                <a href="04-supervisor-rating.html" class="flex items-center px-6 py-3 hover:bg-blue-600"><i class="fas fa-star w-6"></i><span>上级打分</span></a>
+                <a href="05-score-query.html" class="flex items-center px-6 py-3 hover:bg-blue-600"><i class="fas fa-chart-line w-6"></i><span>成绩查询</span></a>
+                <a href="06-admin-config.html" class="flex items-center px-6 py-3 bg-blue-600 border-l-4 border-white"><i class="fas fa-cog w-6"></i><span>系统配置</span></a>
+                <a href="07-report-analysis.html" class="flex items-center px-6 py-3 hover:bg-blue-600"><i class="fas fa-file-alt w-6"></i><span>报表中心</span></a>
+            </nav>
+        </aside>
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <header class="bg-white shadow-sm border-b px-6 py-4">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-2xl font-semibold text-gray-800">系统配置</h2>
+                    <div class="flex items-center space-x-4"><span class="text-gray-600">管理员</span><a href="01-login.html" class="text-gray-500 hover:text-red-600"><i class="fas fa-sign-out-alt"></i><span class="ml-1">退出</span></a></div>
+                </div>
+            </header>
+            <main class="flex-1 overflow-y-auto p-6">
+                <div class="max-w-6xl mx-auto">
+                    <div class="bg-white rounded-lg shadow mb-6">
+                        <div class="border-b"><nav class="flex space-x-4 px-4"><button class="px-4 py-3 border-b-2 border-blue-500 text-blue-600 font-medium">岗位权重配置</button><button class="px-4 py-3 border-b-2 border-transparent text-gray-500">指标模板管理</button></nav></div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6 mb-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-semibold text-gray-800">岗位权重配置</h3>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"><i class="fas fa-plus mr-2"></i>新增岗位</button>
+                        </div>
+                        <table class="w-full">
+                            <thead class="bg-gray-50"><tr><th class="text-left py-3 px-4 text-sm font-medium text-gray-700">岗位名称</th><th class="text-center py-3 px-4 text-sm font-medium text-gray-700">关键任务</th><th class="text-center py-3 px-4 text-sm font-medium text-gray-700">能力态度</th><th class="text-center py-3 px-4 text-sm font-medium text-gray-700">经营指标</th><th class="text-center py-3 px-4 text-sm font-medium text-gray-700">团队管理</th><th class="text-center py-3 px-4 text-sm font-medium text-gray-700">操作</th></tr></thead>
+                            <tbody>
+                                <tr class="border-b"><td class="py-3 px-4 font-medium">技术执行人员</td><td class="text-center"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">65%</span></td><td class="text-center"><span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-sm">25%</span></td><td class="text-center"><span class="px-2 py-1 bg-orange-100 text-orange-700 rounded text-sm">10%</span></td><td class="text-center text-gray-400">-</td><td class="text-center"><button class="text-blue-600 text-sm mr-2">编辑</button><button class="text-red-600 text-sm">删除</button></td></tr>
+                                <tr class="border-b"><td class="py-3 px-4 font-medium">技术主管</td><td class="text-center"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">51%</span></td><td class="text-center"><span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-sm">25%</span></td><td class="text-center"><span class="px-2 py-1 bg-orange-100 text-orange-700 rounded text-sm">10%</span></td><td class="text-center"><span class="px-2 py-1 bg-green-100 text-green-700 rounded text-sm">14%</span></td><td class="text-center"><button class="text-blue-600 text-sm mr-2">编辑</button><button class="text-red-600 text-sm">删除</button></td></tr>
+                                <tr><td class="py-3 px-4 font-medium">项目经理</td><td class="text-center"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">60%</span></td><td class="text-center"><span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-sm">20%</span></td><td class="text-center"><span class="px-2 py-1 bg-orange-100 text-orange-700 rounded text-sm">20%</span></td><td class="text-center text-gray-400">-</td><td class="text-center"><button class="text-blue-600 text-sm mr-2">编辑</button><button class="text-red-600 text-sm">删除</button></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
