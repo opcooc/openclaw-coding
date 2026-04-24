@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>考核打分 - 华规绩效考评系统</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="flex h-screen">
+        <aside class="w-64 bg-blue-700 text-white flex-shrink-0">
+            <div class="p-4 mx-3 mb-2 mt-4"><img src="../images/huagui-logo.png?v=20260417" alt="华规软件" class="w-full h-auto"></div>
+            <nav class="mt-2">
+                <a href="02-workbench.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-home w-6"></i><span>工作台</span></a>
+                <a href="03-task-submission.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-edit w-6"></i><span>任务填报</span></a>
+                <a href="04-task-review.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-tasks w-6"></i><span>任务审核</span></a>
+                <a href="05-performance-rating.html" class="flex items-center px-6 py-3 bg-blue-600 border-l-4 border-white"><i class="fas fa-star w-6"></i><span>考核打分</span></a>
+                <a href="07-report-analysis.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-file-alt w-6"></i><span>报表中心</span></a>
+                <a href="06-admin-config.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-cog w-6"></i><span>系统配置</span></a>
+                <a href="10-user-management.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-user-cog w-6"></i><span>用户管理</span></a>
+                <a href="11-org-structure.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-sitemap w-6"></i><span>组织关系</span></a>
+            </nav>
+        </aside>
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <header class="bg-white shadow-sm border-b px-6 py-4">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-2xl font-semibold text-gray-800">考核打分</h2>
+                    <div class="flex items-center space-x-4">
+                        <span class="text-gray-600" id="userInfo">-</span>
+                        <button onclick="logout()" class="text-gray-500 hover:text-red-600"><i class="fas fa-sign-out-alt"></i><span class="ml-1">退出</span></button>
+                    </div>
+                </div>
+            </header>
+            <main class="flex-1 overflow-y-auto p-6">
+                <div class="bg-white rounded-lg shadow p-6 mb-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-gray-800">选择被考核人</h3>
+                        <div class="text-sm text-gray-600">考核周期：<span class="font-semibold text-blue-600" id="currentMonth">加载中...</span></div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="flex-1">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">下属员工</label>
+                            <div class="relative">
+                                <select id="subordinateSelect" onchange="selectSubordinate()" class="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base appearance-none bg-white cursor-pointer">
+                                    <option value="">-- 加载中 --</option>
+                                </select>
+                                <div class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"><i class="fas fa-user"></i></div>
+                                <div class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"><i class="fas fa-chevron-down"></i></div>
+                            </div>
+                        </div>
+                        <div class="w-48">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">筛选</label>
+                            <select onchange="filterSubordinates(this.value)" class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base bg-white">
+                                <option value="all">全部员工</option>
+                                <option value="rated">已打分</option>
+                                <option value="unrated">未打分</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-4 grid grid-cols-3 gap-4">
+                        <div class="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                            <div class="flex items-center justify-between">
+                                <div><p class="text-sm text-gray-600">总人数</p><p class="text-2xl font-bold text-blue-600" id="totalCount">0</p></div>
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center"><i class="fas fa-users text-blue-600 text-xl"></i></div>
+                            </div>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4 border border-green-200">
+                            <div class="flex items-center justify-between">
+                                <div><p class="text-sm text-gray-600">已打分</p><p class="text-2xl font-bold text-green-600" id="ratedCount">0</p></div>
+                                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center"><i class="fas fa-check-circle text-green-600 text-xl"></i></div>
+                            </div>
+                        </div>
+                        <div class="bg-orange-50 rounded-lg p-4 border border-orange-200">
+                            <div class="flex items-center justify-between">
+                                <div><p class="text-sm text-gray-600">待打分</p><p class="text-2xl font-bold text-orange-600" id="unratedCount">0</p></div>
+                                <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center"><i class="fas fa-clock text-orange-600 text-xl"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow p-6" id="ratingForm" style="display: none;">
+                    <div class="border-b pb-4 mb-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800">绩效考核表</h3>
+                                <p class="text-sm text-gray-500 mt-1">被考核人：<span id="formSubordinateName" class="font-medium text-blue-600"></span></p>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span id="ratingStatus" class="px-3 py-1 rounded-full text-sm font-medium"><i class="fas fa-clock mr-1"></i>未打分</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 经营指标 -->
+                    <div class="mb-8">
+                        <h4 class="text-md font-semibold text-gray-800 mb-4 flex items-center"><span class="bg-blue-100 text-blue-800 px-3 py-1 rounded text-sm mr-2">经营指标</span><span class="text-sm text-gray-500">权重：<span id="businessWeight">-</span>（系统自动计算）</span></h4>
+                        <div id="businessLoading" class="text-center py-4"><i class="fas fa-spinner fa-spin text-xl text-blue-600"></i><p class="text-gray-500 text-sm mt-1">加载经营数据...</p></div>
+                        <div class="bg-gray-50 rounded-lg p-4 border" id="businessData" style="display: none;">
+                            <div class="grid grid-cols-3 gap-4">
+                                <div><p class="text-sm text-gray-500">月度累计计划收入</p><p class="font-medium" id="planRevenue">-</p></div>
+                                <div><p class="text-sm text-gray-500">月度累计实际收入</p><p class="font-medium text-green-600" id="actualRevenue">-</p></div>
+                                <div><p class="text-sm text-gray-500">经营指标得分</p><p class="font-semibold text-blue-600 text-lg" id="businessScore">-</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 关键任务指标 -->
+                    <div class="mb-8">
+                        <h4 class="text-md font-semibold text-gray-800 mb-4 flex items-center"><span class="bg-green-100 text-green-800 px-3 py-1 rounded text-sm mr-2">关键任务指标</span><span class="text-sm text-gray-500">权重：<span id="taskWeight">-</span>（仅上级评分）</span></h4>
+                        <div id="taskLoading" class="text-center py-4"><i class="fas fa-spinner fa-spin text-xl text-blue-600"></i><p class="text-gray-500 text-sm mt-1">加载任务数据...</p></div>
+                        <div class="border rounded-lg overflow-hidden" id="taskTableWrapper" style="display: none;">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">序号</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">工作任务</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">完成情况</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">权重</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">评分 (0-100)</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">小计</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200" id="taskRatingBody"></tbody>
+                                <tfoot class="bg-gray-50">
+                                    <tr><td colspan="5" class="px-4 py-3 text-right text-sm font-medium text-gray-700">关键任务合计</td><td class="px-4 py-3 text-sm font-semibold text-blue-600" id="taskTotal">0 分</td></tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- 能力态度指标 -->
+                    <div class="mb-8">
+                        <h4 class="text-md font-semibold text-gray-800 mb-4 flex items-center"><span class="bg-purple-100 text-purple-800 px-3 py-1 rounded text-sm mr-2">能力态度指标</span><span class="text-sm text-gray-500">权重：<span id="attitudeWeight">-</span>（上级 50% + 项目经理 50%）</span></h4>
+                        <div id="attitudeLoading" class="text-center py-4"><i class="fas fa-spinner fa-spin text-xl text-blue-600"></i><p class="text-gray-500 text-sm mt-1">加载评分模板...</p></div>
+                        <div class="border rounded-lg overflow-hidden" id="attitudeTableWrapper" style="display: none;">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">序号</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">考核项</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">权重</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">上级评分 (50%)</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">小计</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200" id="attitudeRatingBody"></tbody>
+                                <tfoot class="bg-gray-50">
+                                    <tr><td colspan="4" class="px-4 py-3 text-right text-sm font-medium text-gray-700">能力态度合计（上级评分部分）</td><td class="px-4 py-3 text-sm font-semibold text-purple-600" id="attitudeTotal">0 分</td></tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2">* 项目经理评分由项目经理另行填写，此处仅显示上级评分部分（50% 权重）</p>
+                    </div>
+                    <!-- 总分汇总 -->
+                    <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6 border-2 border-blue-200">
+                        <h4 class="text-lg font-semibold text-gray-800 mb-4">总分汇总</h4>
+                        <div class="grid grid-cols-4 gap-6">
+                            <div class="text-center"><p class="text-sm text-gray-500 mb-1">经营指标得分</p><p class="text-2xl font-bold text-blue-600" id="summaryBusinessScore">0</p><p class="text-xs text-gray-400 mt-1">权重 <span id="summaryBusinessWeight">-</span></p></div>
+                            <div class="text-center"><p class="text-sm text-gray-500 mb-1">关键任务得分</p><p class="text-2xl font-bold text-green-600" id="taskScoreSummary">0</p><p class="text-xs text-gray-400 mt-1">权重 <span id="summaryTaskWeight">-</span></p></div>
+                            <div class="text-center"><p class="text-sm text-gray-500 mb-1">能力态度得分</p><p class="text-2xl font-bold text-purple-600" id="attitudeScoreSummary">0</p><p class="text-xs text-gray-400 mt-1">权重 <span id="summaryAttitudeWeight">-</span></p></div>
+                            <div class="text-center bg-white rounded-lg p-4 shadow"><p class="text-sm text-gray-500 mb-1">综合得分</p><p class="text-3xl font-bold text-red-600" id="totalScore">0</p><p class="text-sm font-medium text-gray-600 mt-1" id="gradeDisplay">待评定</p></div>
+                        </div>
+                    </div>
+                    <div class="mt-8 flex justify-end space-x-4">
+                        <button onclick="saveRating()" id="saveRatingBtn" class="px-6 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors"><i class="fas fa-save mr-1"></i>保存草稿</button>
+                        <button onclick="submitRating()" id="submitRatingBtn" class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"><i class="fas fa-check mr-1"></i>提交打分</button>
+                    </div>
+                </div>
+                <div id="noSelectionTip" class="bg-white rounded-lg shadow p-12 text-center">
+                    <i class="fas fa-user-plus text-6xl text-gray-300 mb-4"></i>
+                    <p class="text-gray-500 text-lg">请从上方选择被考核人</p>
+                </div>
+            </main>
+        </div>
+    </div>
+    <!-- 引入 API 封装 -->
+    <script src="../js/api.js"></script>
+    <script>
+        if (!api.getToken()) window.location.href = '01-login.html';
+
+        let subordinates = [];
+        let currentSubordinateId = null;
+        let currentCycleId = null;
+        let templateData = null;
+        let businessData = null;
+        let taskData = [];
+        let attitudeItems = [];
+        let existingScore = null;
+
+        // 状态映射
+        const STATUS_MAP = { 0: 'DRAFT', 1: 'PENDING_REVIEW', 2: 'APPROVED', 3: 'REJECTED' };
+        const STATUS_TEXT = { 0: '草稿', 1: '待审核', 2: '已通过', 3: '已驳回' };
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            loadUserInfo();
+            await initCycle();
+            await loadSubordinates();
+        });
+
+        function loadUserInfo() {
+            const user = api.getCurrentUser();
+            if (user) {
+                document.getElementById('userInfo').textContent = user.name + ' - ' + (user.role === 'admin' ? '管理员' : '经理');
+            }
+        }
+
+        function logout() {
+            if (confirm('确认退出？')) {
+                authAPI.logout().then(() => window.location.href = '01-login.html');
+            }
+        }
+
+        // 初始化考核周期
+        async function initCycle() {
+            try {
+                const res = await cycleAPI.getList({ status: 1 });
+                const cycles = res.data || [];
+                if (cycles.length > 0) {
+                    currentCycleId = cycles[0].id;
+                    document.getElementById('currentMonth').textContent = cycles[0].cycleName || cycles[0].startDate;
+                    // 加载评分模板
+                    await loadTemplate();
+                } else {
+                    document.getElementById('currentMonth').textContent = '暂无周期';
+                }
+            } catch (e) {
+                console.error('加载考核周期失败:', e);
+                document.getElementById('currentMonth').textContent = '加载失败';
+            }
+        }
+
+        // 加载评分模板
+        async function loadTemplate() {
+            try {
+                const res = await templateAPI.getByCycle(currentCycleId);
+                templateData = res.data || null;
+                if (templateData) {
+                    // 从模板获取权重
+                    const bw = templateData.businessWeight || 10;
+                    const tw = templateData.taskWeight || 60;
+                    const aw = templateData.attitudeWeight || 30;
+                    document.getElementById('businessWeight').textContent = bw + '%';
+                    document.getElementById('taskWeight').textContent = tw + '%';
+                    document.getElementById('attitudeWeight').textContent = aw + '%';
+                    document.getElementById('summaryBusinessWeight').textContent = bw + '%';
+                    document.getElementById('summaryTaskWeight').textContent = tw + '%';
+                    document.getElementById('summaryAttitudeWeight').textContent = aw + '%';
+                    // 能力态度考核项
+                    attitudeItems = templateData.attitudeItems || [
+                        { name: '团队协作', weight: 25 },
+                        { name: '责任心', weight: 25 },
+                        { name: '专业能力', weight: 25 },
+                        { name: '学习能力', weight: 25 }
+                    ];
+                }
+            } catch (e) {
+                console.warn('加载评分模板失败，使用默认值:', e);
+                templateData = { businessWeight: 10, taskWeight: 60, attitudeWeight: 30 };
+            }
+        }
+
+        // 加载下属列表
+        async function loadSubordinates() {
+            if (!currentCycleId) return;
+            try {
+                const res = await userAPI.getList({ role: 'employee' });
+                const users = res.data || [];
+                // 为每个用户查询是否已打分
+                subordinates = users.map(u => ({
+                    id: u.id,
+                    name: u.realName || u.username,
+                    position: u.position || '员工',
+                    deptId: u.deptId,
+                    hasRated: false,
+                    score: null
+                }));
+
+                // 查询已有评分
+                try {
+                    const scoreRes = await scoreAPI.getList({ cycleId: currentCycleId });
+                    const scores = scoreRes.data || [];
+                    scores.forEach(s => {
+                        const sub = subordinates.find(sub => sub.id === s.userId);
+                        if (sub) {
+                            sub.hasRated = (s.status === 2); // APPROVED
+                            sub.score = s.totalScore;
+                        }
+                    });
+                } catch(e) { /* 忽略评分查询错误 */ }
+
+                initSubordinateSelect();
+            } catch (e) {
+                console.error('加载下属失败:', e);
+                document.getElementById('subordinateSelect').innerHTML = '<option value="">加载失败</option>';
+            }
+        }
+
+        function initSubordinateSelect() {
+            const select = document.getElementById('subordinateSelect');
+            select.innerHTML = '<option value="">-- 请选择下属 --</option>' + subordinates.map(sub =>
+                `<option value="${sub.id}" data-rated="${sub.hasRated}">${sub.name} - ${sub.position || '员工'} ${sub.hasRated ? '(已打分 ' + (sub.score ? sub.score.toFixed(1) : '') + ')' : '(未打分)'}</option>`
+            ).join('');
+            updateStats();
+        }
+
+        function updateStats() {
+            const total = subordinates.length;
+            const rated = subordinates.filter(s => s.hasRated).length;
+            const unrated = total - rated;
+            document.getElementById('totalCount').textContent = total;
+            document.getElementById('ratedCount').textContent = rated;
+            document.getElementById('unratedCount').textContent = unrated;
+        }
+
+        async function selectSubordinate() {
+            const select = document.getElementById('subordinateSelect');
+            currentSubordinateId = select.value ? parseInt(select.value) : null;
+
+            if (!currentSubordinateId) {
+                document.getElementById('ratingForm').style.display = 'none';
+                document.getElementById('noSelectionTip').style.display = 'block';
+                return;
+            }
+
+            const sub = subordinates.find(s => s.id === currentSubordinateId);
+            document.getElementById('noSelectionTip').style.display = 'none';
+            document.getElementById('ratingForm').style.display = 'block';
+            document.getElementById('formSubordinateName').textContent = sub.name + ' (' + (sub.position || '员工') + ')';
+
+            const statusEl = document.getElementById('ratingStatus');
+            if (sub.hasRated) {
+                statusEl.className = 'px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-700';
+                statusEl.innerHTML = '<i class="fas fa-check-circle mr-1"></i>已打分 ' + (sub.score ? sub.score.toFixed(1) : '');
+            } else {
+                statusEl.className = 'px-3 py-1 rounded-full text-sm font-medium bg-orange-100 text-orange-700';
+                statusEl.innerHTML = '<i class="fas fa-clock mr-1"></i>未打分';
+            }
+
+            // 加载经营数据
+            await loadBusinessData();
+            // 加载任务数据
+            await loadTaskData();
+            // 渲染能力态度
+            renderAttitudeRating();
+            // 加载已有评分
+            await loadExistingScore();
+            // 计算总分
+            calculateTaskTotal();
+            calculateAttitudeTotal();
+            calculateTotal();
+        }
+
+        // 加载经营数据
+        async function loadBusinessData() {
+            document.getElementById('businessLoading').style.display = 'block';
+            document.getElementById('businessData').style.display = 'none';
+
+            try {
+                const res = await templateAPI.getBusinessData({
+                    cycleId: currentCycleId,
+                    userId: currentSubordinateId
+                });
+                businessData = res.data || { planRevenue: 0, actualRevenue: 0, score: 100 };
+
+                document.getElementById('planRevenue').textContent = formatCurrency(businessData.planRevenue);
+                document.getElementById('actualRevenue').textContent = formatCurrency(businessData.actualRevenue);
+                document.getElementById('businessScore').textContent = (businessData.score || 0).toFixed(1) + ' 分';
+
+                document.getElementById('businessLoading').style.display = 'none';
+                document.getElementById('businessData').style.display = 'block';
+            } catch (e) {
+                console.warn('加载经营数据失败:', e);
+                // 如果没有经营数据接口，显示默认值
+                businessData = { planRevenue: 0, actualRevenue: 0, score: 100 };
+                document.getElementById('planRevenue').textContent = '-';
+                document.getElementById('actualRevenue').textContent = '-';
+                document.getElementById('businessScore').textContent = '100 分';
+                document.getElementById('businessLoading').style.display = 'none';
+                document.getElementById('businessData').style.display = 'block';
+            }
+        }
+
+        function formatCurrency(amount) {
+            if (amount == null) return '-';
+            return '¥' + Number(amount).toLocaleString('zh-CN');
+        }
+
+        // 加载任务数据（该员工的已审核任务）
+        async function loadTaskData() {
+            document.getElementById('taskLoading').style.display = 'block';
+            document.getElementById('taskTableWrapper').style.display = 'none';
+
+            try {
+                const res = await taskAPI.getList({ cycleId: currentCycleId, userId: currentSubordinateId });
+                taskData = (res.data || []).filter(t => t.status === 2); // APPROVED tasks only
+
+                renderTaskRating();
+                document.getElementById('taskLoading').style.display = 'none';
+                document.getElementById('taskTableWrapper').style.display = 'block';
+            } catch (e) {
+                console.error('加载任务数据失败:', e);
+                taskData = [];
+                document.getElementById('taskLoading').style.display = 'none';
+                document.getElementById('taskTableWrapper').style.display = 'block';
+                document.getElementById('taskRatingBody').innerHTML = '<tr><td colspan="6" class="px-4 py-8 text-center text-gray-400">暂无已审核任务</td></tr>';
+            }
+        }
+
+        function renderTaskRating() {
+            const tbody = document.getElementById('taskRatingBody');
+            const tw = templateData?.taskWeight || 60;
+
+            if (taskData.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" class="px-4 py-8 text-center text-gray-400">暂无已审核任务</td></tr>';
+                return;
+            }
+
+            const weightPerTask = taskData.length > 0 ? (tw / taskData.length) : tw;
+
+            tbody.innerHTML = taskData.map((task, index) => {
+                const score = existingScore ? (task.leaderScore || 0) : 0;
+                return `<tr>
+                    <td class="px-4 py-3 text-sm text-gray-900">${index + 1}</td>
+                    <td class="px-4 py-3 text-sm text-gray-900 font-medium">${escapeHtml(task.taskName || '')}</td>
+                    <td class="px-4 py-3 text-sm text-gray-500">${escapeHtml(task.taskDesc || '—')}</td>
+                    <td class="px-4 py-3 text-sm text-gray-500">${weightPerTask.toFixed(1)}%</td>
+                    <td class="px-4 py-3"><input type="number" min="0" max="100" class="task-score w-24 px-2 py-1 border rounded focus:ring-2 focus:ring-blue-500" onchange="calculateTaskTotal()" value="${score}"></td>
+                    <td class="px-4 py-3 text-sm font-medium task-subtotal">0 分</td>
+                </tr>`;
+            }).join('');
+        }
+
+        function renderAttitudeRating() {
+            const tbody = document.getElementById('attitudeRatingBody');
+            const aw = templateData?.attitudeWeight || 30;
+
+            if (!attitudeItems || attitudeItems.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="px-4 py-8 text-center text-gray-400">暂无能力态度考核项</td></tr>';
+                document.getElementById('attitudeLoading').style.display = 'none';
+                document.getElementById('attitudeTableWrapper').style.display = 'block';
+                return;
+            }
+
+            const totalWeight = attitudeItems.reduce((sum, item) => sum + (item.weight || 0), 0) || 100;
+
+            tbody.innerHTML = attitudeItems.map((item, index) => {
+                const normalizedWeight = ((item.weight || 0) / totalWeight * aw);
+                const score = existingScore ? 0 : 0; // 默认空值
+                return `<tr>
+                    <td class="px-4 py-3 text-sm text-gray-900">${index + 1}</td>
+                    <td class="px-4 py-3 text-sm text-gray-900">${escapeHtml(item.name)}</td>
+                    <td class="px-4 py-3 text-sm text-gray-500">${normalizedWeight.toFixed(1)}%</td>
+                    <td class="px-4 py-3"><input type="number" min="0" max="100" class="attitude-score w-24 px-2 py-1 border rounded focus:ring-2 focus:ring-blue-500" onchange="calculateAttitudeTotal()" value="${score}" data-weight="${normalizedWeight}"></td>
+                    <td class="px-4 py-3 text-sm font-medium attitude-subtotal">0 分</td>
+                </tr>`;
+            }).join('');
+
+            document.getElementById('attitudeLoading').style.display = 'none';
+            document.getElementById('attitudeTableWrapper').style.display = 'block';
+        }
+
+        function calculateTaskTotal() {
+            const scores = document.querySelectorAll('.task-score');
+            const tw = templateData?.taskWeight || 60;
+            const weightPerTask = scores.length > 0 ? (tw / scores.length) : 0;
+            let total = 0;
+
+            scores.forEach((input) => {
+                const score = parseFloat(input.value) || 0;
+                const subtotal = score * (weightPerTask / 100);
+                input.closest('tr').querySelector('.task-subtotal').textContent = subtotal.toFixed(1) + ' 分';
+                total += subtotal;
+            });
+
+            document.getElementById('taskTotal').textContent = total.toFixed(1) + ' 分';
+            calculateTotal();
+        }
+
+        function calculateAttitudeTotal() {
+            const inputs = document.querySelectorAll('.attitude-score');
+            let total = 0;
+
+            inputs.forEach((input) => {
+                const score = parseFloat(input.value) || 0;
+                const weight = parseFloat(input.dataset.weight) || 0;
+                // 上级评分部分占 50%
+                const subtotal = score * (weight / 100) * 0.5;
+                input.closest('tr').querySelector('.attitude-subtotal').textContent = subtotal.toFixed(1) + ' 分';
+                total += subtotal;
+            });
+
+            document.getElementById('attitudeTotal').textContent = total.toFixed(1) + ' 分';
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            const bw = templateData?.businessWeight || 10;
+            const businessRaw = businessData?.score || 0;
+            const businessContrib = businessRaw * (bw / 100);
+
+            const taskTotal = parseFloat(document.getElementById('taskTotal').textContent) || 0;
+            const attitudeTotal = parseFloat(document.getElementById('attitudeTotal').textContent) || 0;
+
+            const total = businessContrib + taskTotal + attitudeTotal * 2;
+
+            document.getElementById('summaryBusinessScore').textContent = businessContrib.toFixed(1);
+            document.getElementById('taskScoreSummary').textContent = taskTotal.toFixed(1);
+            document.getElementById('attitudeScoreSummary').textContent = (attitudeTotal * 2).toFixed(1);
+            document.getElementById('totalScore').textContent = total.toFixed(1);
+
+            let grade = '';
+            let gradeColor = '';
+            if (total >= 90) { grade = '优秀'; gradeColor = 'text-green-600'; }
+            else if (total >= 80) { grade = '良好'; gradeColor = 'text-green-500'; }
+            else if (total >= 70) { grade = '合格'; gradeColor = 'text-blue-600'; }
+            else if (total >= 60) { grade = '待改进'; gradeColor = 'text-orange-600'; }
+            else { grade = '不合格'; gradeColor = 'text-red-600'; }
+
+            document.getElementById('gradeDisplay').textContent = grade;
+            document.getElementById('gradeDisplay').className = 'text-sm font-medium mt-1 ' + gradeColor;
+        }
+
+        async function loadExistingScore() {
+            try {
+                const res = await scoreAPI.getList({ cycleId: currentCycleId, userId: currentSubordinateId });
+                const scores = res.data || [];
+                existingScore = scores.length > 0 ? scores[0] : null;
+            } catch (e) {
+                existingScore = null;
+            }
+        }
+
+        function filterSubordinates(filter) {
+            const select = document.getElementById('subordinateSelect');
+            const options = Array.from(select.options).slice(1);
+            options.forEach(opt => {
+                const rated = opt.getAttribute('data-rated') === 'true';
+                if (filter === 'all') opt.style.display = '';
+                else if (filter === 'rated' && rated) opt.style.display = '';
+                else if (filter === 'unrated' && !rated) opt.style.display = '';
+                else opt.style.display = 'none';
+            });
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        async function saveRating() {
+            if (!currentSubordinateId) return;
+
+            const btn = document.getElementById('saveRatingBtn');
+            const originalText = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i>保存中...';
+
+            try {
+                await scoreAPI.create({
+                    userId: currentSubordinateId,
+                    cycleId: currentCycleId,
+                    goalScore: businessData?.score || 0,
+                    taskScore: parseFloat(document.getElementById('taskTotal').textContent) || 0,
+                    totalScore: parseFloat(document.getElementById('totalScore').textContent) || 0,
+                    level: document.getElementById('gradeDisplay').textContent,
+                    status: 0 // DRAFT
+                });
+                alert('保存成功！草稿已保存。');
+            } catch (e) {
+                alert('保存失败：' + e.message);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+            }
+        }
+
+        async function submitRating() {
+            if (!currentSubordinateId) return;
+            const total = parseFloat(document.getElementById('totalScore').textContent);
+            if (total === 0) { alert('请先填写评分'); return; }
+            if (!confirm('确认提交打分吗？综合得分：' + total.toFixed(1) + '分')) return;
+
+            const btn = document.getElementById('submitRatingBtn');
+            const originalText = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i>提交中...';
+
+            try {
+                await scoreAPI.create({
+                    userId: currentSubordinateId,
+                    cycleId: currentCycleId,
+                    goalScore: businessData?.score || 0,
+                    taskScore: parseFloat(document.getElementById('taskTotal').textContent) || 0,
+                    totalScore: total,
+                    level: document.getElementById('gradeDisplay').textContent,
+                    status: 1 // PENDING_REVIEW
+                });
+                alert('提交成功！打分已提交，等待审核。');
+                window.location.href = '02-workbench.html';
+            } catch (e) {
+                alert('提交失败：' + e.message);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -2,6 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>成绩查询 - 华规绩效考评系统</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -9,76 +10,413 @@
 <body class="bg-gray-50 min-h-screen">
     <div class="flex h-screen">
         <aside class="w-64 bg-blue-700 text-white flex-shrink-0">
-    <div class="p-4 mx-3 mb-2 mt-4"><img src="../images/huagui-logo.png?v=20260417" alt="华规软件" class="w-full h-auto"></div>
-    <nav class="mt-2">
-        
-        
-        
-        
-        
-        
-    </nav>
-</aside>
+            <div class="p-4 mx-3 mb-2 mt-4"><img src="../images/huagui-logo.png?v=20260417" alt="华规软件" class="w-full h-auto"></div>
+            <nav class="mt-2">
+                <a href="02-workbench.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-home w-6"></i><span>工作台</span></a>
+                <a href="03-task-submission.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-edit w-6"></i><span>任务填报</span></a>
+                <a href="04-task-review.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-tasks w-6"></i><span>任务审核</span></a>
+                <a href="05-performance-rating.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-star w-6"></i><span>考核打分</span></a>
+                <a href="05-score-query.html" class="flex items-center px-6 py-3 bg-blue-600 border-l-4 border-white"><i class="fas fa-chart-bar w-6"></i><span>成绩查询</span></a>
+                <a href="07-report-analysis.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-file-alt w-6"></i><span>报表中心</span></a>
+                <a href="06-admin-config.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-cog w-6"></i><span>系统配置</span></a>
+                <a href="10-user-management.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-user-cog w-6"></i><span>用户管理</span></a>
+                <a href="11-org-structure.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-sitemap w-6"></i><span>组织关系</span></a>
+            </nav>
+        </aside>
         <div class="flex-1 flex flex-col overflow-hidden">
             <header class="bg-white shadow-sm border-b px-6 py-4">
                 <div class="flex justify-between items-center">
-                    <h2 class="text-2xl font-semibold text-gray-800">个人成绩查询</h2>
-                    <div class="flex items-center space-x-4"><span class="text-gray-600">李晓明</span><a href="01-login.html" class="text-gray-500 hover:text-red-600"><i class="fas fa-sign-out-alt"></i><span class="ml-1">退出</span></a></div>
+                    <h2 class="text-2xl font-semibold text-gray-800">成绩查询</h2>
+                    <div class="flex items-center space-x-4">
+                        <span class="text-gray-600" id="userInfo">-</span>
+                        <button onclick="logout()" class="text-gray-500 hover:text-red-600"><i class="fas fa-sign-out-alt"></i><span class="ml-1">退出</span></button>
+                    </div>
                 </div>
             </header>
             <main class="flex-1 overflow-y-auto p-6">
-                <div class="max-w-6xl mx-auto">
-                    <div class="bg-white rounded-lg shadow p-4 mb-6">
-                        <div class="flex gap-4">
-                            <div><label class="block text-sm text-gray-600 mb-1">考核年度</label><select class="border rounded px-3 py-2"><option>2026 年</option><option>2025 年</option></select></div>
-                            <div><label class="block text-sm text-gray-600 mb-1">考核周期</label><select class="border rounded px-3 py-2"><option>全部</option><option>第一季度</option></select></div>
-                            <div class="flex items-end"><button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"><i class="fas fa-search mr-2"></i>查询</button></div>
+                <!-- 筛选条件 -->
+                <div class="bg-white rounded-lg shadow p-6 mb-6">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-48">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">考核周期</label>
+                            <select id="cycleFilter" onchange="onFilterChange()" class="w-full border rounded-lg px-3 py-2">
+                                <option value="">全部周期</option>
+                            </select>
+                        </div>
+                        <div class="w-48">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">部门</label>
+                            <select id="deptFilter" onchange="onFilterChange()" class="w-full border rounded-lg px-3 py-2">
+                                <option value="">全部部门</option>
+                            </select>
+                        </div>
+                        <div class="w-48">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">等级</label>
+                            <select id="gradeFilter" onchange="onFilterChange()" class="w-full border rounded-lg px-3 py-2">
+                                <option value="">全部等级</option>
+                                <option value="优秀">优秀</option>
+                                <option value="良好">良好</option>
+                                <option value="合格">合格</option>
+                                <option value="待改进">待改进</option>
+                                <option value="不合格">不合格</option>
+                            </select>
+                        </div>
+                        <div class="flex-1">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">搜索</label>
+                            <input type="text" id="searchInput" onkeyup="onFilterChange()" placeholder="输入姓名搜索" class="w-full border rounded-lg px-3 py-2">
+                        </div>
+                        <div class="flex items-end space-x-2">
+                            <button onclick="onFilterChange()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg"><i class="fas fa-search mr-1"></i>查询</button>
+                            <button onclick="exportScores()" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg"><i class="fas fa-download mr-1"></i>导出</button>
                         </div>
                     </div>
-                    <div class="bg-white rounded-lg shadow mb-6">
-                        <div class="p-4 border-b"><h3 class="text-lg font-semibold">考核成绩汇总</h3></div>
-                        <table class="w-full">
-                            <thead class="bg-gray-50"><tr><th class="text-left py-3 px-4 text-sm font-medium text-gray-700">周期</th><th class="text-center py-3 px-4 text-sm font-medium text-gray-700">关键任务</th><th class="text-center py-3 px-4 text-sm font-medium text-gray-700">能力态度</th><th class="text-center py-3 px-4 text-sm font-medium text-gray-700">经营指标</th><th class="text-center py-3 px-4 text-sm font-medium text-gray-700">总分</th><th class="text-center py-3 px-4 text-sm font-medium text-gray-700">等级</th><th class="text-center py-3 px-4 text-sm font-medium text-gray-700">操作</th></tr></thead>
-                            <tbody>
-                                <tr class="border-b"><td class="py-3 px-4">2026-03</td><td class="text-center">54.0</td><td class="text-center">18.5</td><td class="text-center">19.0</td><td class="text-center font-bold text-blue-600">91.5</td><td class="text-center"><span class="px-2 py-1 bg-green-100 text-green-700 rounded text-sm">A</span></td><td class="text-center"><button class="text-blue-600 text-sm">详情</button></td></tr>
-                                <tr class="border-b"><td class="py-3 px-4">2026-02</td><td class="text-center">51.0</td><td class="text-center">17.0</td><td class="text-center">18.5</td><td class="text-center font-bold text-blue-600">86.5</td><td class="text-center"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">B</span></td><td class="text-center"><button class="text-blue-600 text-sm">详情</button></td></tr>
-                                <tr><td class="py-3 px-4">2026-01</td><td class="text-center">55.5</td><td class="text-center">19.0</td><td class="text-center">20.0</td><td class="text-center font-bold text-blue-600">94.5</td><td class="text-center"><span class="px-2 py-1 bg-green-100 text-green-700 rounded text-sm">A</span></td><td class="text-center"><button class="text-blue-600 text-sm">详情</button></td></tr>
-                            </tbody>
+                    <!-- 快捷范围选择 -->
+                    <div class="flex items-center space-x-2 text-sm">
+                        <span class="text-gray-500">快捷：</span>
+                        <button onclick="quickRange('3')" class="px-3 py-1 border rounded hover:bg-blue-50 hover:border-blue-300">近 3 月</button>
+                        <button onclick="quickRange('6')" class="px-3 py-1 border rounded hover:bg-blue-50 hover:border-blue-300">近 6 月</button>
+                        <button onclick="quickRange('12')" class="px-3 py-1 border rounded hover:bg-blue-50 hover:border-blue-300">近 1 年</button>
+                        <button onclick="quickRange('all')" class="px-3 py-1 border rounded hover:bg-blue-50 hover:border-blue-300">全部</button>
+                    </div>
+                </div>
+                <!-- 成绩列表 -->
+                <div class="bg-white rounded-lg shadow p-6 mb-6">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">序号</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">姓名</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">部门</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">岗位</th>
+                                    <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase">考核周期</th>
+                                    <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase">经营指标</th>
+                                    <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase">关键任务</th>
+                                    <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase">能力态度</th>
+                                    <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase">综合得分</th>
+                                    <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase">等级</th>
+                                    <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200" id="scoreTableBody"></tbody>
                         </table>
                     </div>
-                    <div class="bg-white rounded-lg shadow p-6">
-                        <h3 class="text-lg font-semibold mb-4">绩效等级说明</h3>
-                        <div class="grid grid-cols-4 gap-4">
-                            <div class="text-center p-4 bg-green-50 rounded"><div class="text-2xl font-bold text-green-600">A</div><div class="text-sm text-gray-600 mt-1">90-100 分</div><div class="text-xs text-gray-500 mt-2">优秀</div></div>
-                            <div class="text-center p-4 bg-blue-50 rounded"><div class="text-2xl font-bold text-blue-600">B</div><div class="text-sm text-gray-600 mt-1">80-89 分</div><div class="text-xs text-gray-500 mt-2">良好</div></div>
-                            <div class="text-center p-4 bg-yellow-50 rounded"><div class="text-2xl font-bold text-yellow-600">C</div><div class="text-sm text-gray-600 mt-1">70-79 分</div><div class="text-xs text-gray-500 mt-2">合格</div></div>
-                            <div class="text-center p-4 bg-red-50 rounded"><div class="text-2xl font-bold text-red-600">D</div><div class="text-sm text-gray-600 mt-1">0-69 分</div><div class="text-xs text-gray-500 mt-2">待改进</div></div>
+                    <div id="emptyState" class="text-center py-12 hidden">
+                        <i class="fas fa-inbox text-6xl text-gray-300 mb-4"></i>
+                        <p class="text-gray-500">暂无成绩数据</p>
+                    </div>
+                    <div id="loadingState" class="text-center py-12">
+                        <i class="fas fa-spinner fa-spin text-4xl text-blue-400 mb-4"></i>
+                        <p class="text-gray-500">加载中...</p>
+                    </div>
+                    <!-- 分页 -->
+                    <div class="px-6 py-4 border-t flex justify-between items-center" id="paginationBar">
+                        <div class="text-sm text-gray-600">
+                            共 <span id="totalCount" class="font-medium">0</span> 条记录，第 <span id="currentPage">1</span> / <span id="totalPages">1</span> 页
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button onclick="goPage(1)" class="px-3 py-1 border rounded hover:bg-gray-50" id="btnFirst"><i class="fas fa-angle-double-left"></i></button>
+                            <button onclick="goPage(currentPageNum - 1)" class="px-3 py-1 border rounded hover:bg-gray-50" id="btnPrev"><i class="fas fa-chevron-left"></i></button>
+                            <div id="pageButtons" class="flex space-x-1"></div>
+                            <button onclick="goPage(currentPageNum + 1)" class="px-3 py-1 border rounded hover:bg-gray-50" id="btnNext"><i class="fas fa-chevron-right"></i></button>
+                            <button onclick="goPage(totalPageNum)" class="px-3 py-1 border rounded hover:bg-gray-50" id="btnLast"><i class="fas fa-angle-double-right"></i></button>
+                            <span class="ml-2 text-sm text-gray-500">跳转到</span>
+                            <input type="number" id="jumpPage" min="1" class="w-16 px-2 py-1 border rounded text-center" onkeydown="if(event.key==='Enter')goPage(parseInt(this.value))">
                         </div>
                     </div>
+                </div>
+                <!-- 趋势图 -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4"><i class="fas fa-chart-line text-blue-500 mr-2"></i>个人成绩趋势</h3>
+                    <div class="flex items-center space-x-4 mb-4">
+                        <select id="trendUserSelect" onchange="renderTrend()" class="border rounded-lg px-3 py-2">
+                            <option value="">-- 选择员工 --</option>
+                        </select>
+                    </div>
+                    <div id="trendChart" class="h-64 flex items-end justify-center space-x-4 px-8 pb-4 border-b"></div>
                 </div>
             </main>
         </div>
     </div>
+    <!-- 成绩详情弹窗 -->
+    <div id="detailModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl mx-4">
+            <div class="px-6 py-4 border-b flex justify-between items-center">
+                <h3 class="text-lg font-semibold text-gray-800">成绩详情</h3>
+                <button onclick="hideDetailModal()" class="text-gray-400 hover:text-gray-600 text-xl"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="px-6 py-4">
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div><p class="text-sm text-gray-500">姓名</p><p class="font-medium" id="detailName">-</p></div>
+                    <div><p class="text-sm text-gray-500">部门</p><p class="font-medium" id="detailDept">-</p></div>
+                    <div><p class="text-sm text-gray-500">考核周期</p><p class="font-medium" id="detailMonth">-</p></div>
+                    <div><p class="text-sm text-gray-500">岗位</p><p class="font-medium" id="detailPosition">-</p></div>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center p-3 bg-blue-50 rounded"><span class="text-gray-700">经营指标得分</span><span class="font-semibold text-blue-600" id="detailBusiness">-</span></div>
+                    <div class="flex justify-between items-center p-3 bg-green-50 rounded"><span class="text-gray-700">关键任务得分</span><span class="font-semibold text-green-600" id="detailTask">-</span></div>
+                    <div class="flex justify-between items-center p-3 bg-purple-50 rounded"><span class="text-gray-700">能力态度得分</span><span class="font-semibold text-purple-600" id="detailAttitude">-</span></div>
+                    <div class="flex justify-between items-center p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border-2 border-blue-200"><span class="text-gray-800 font-semibold">综合得分</span><span class="text-2xl font-bold text-red-600" id="detailTotal">-</span></div>
+                    <div class="text-center"><span class="px-4 py-2 rounded-full text-sm font-medium" id="detailGrade">-</span></div>
+                </div>
+            </div>
+            <div class="px-6 py-4 border-t bg-gray-50 flex justify-end">
+                <button onclick="hideDetailModal()" class="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg">关闭</button>
+            </div>
+        </div>
+    </div>
+    <script src="../js/api.js"></script>
+    <script>
+        if (!api.getToken()) window.location.href = '01-login.html';
+
+        let scores = [];
+        let allScores = [];
+        let currentUser = null;
+        let currentPageNum = 1;
+        let totalPageNum = 1;
+        const pageSize = 10;
+        let cycles = [];
+        let departments = [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            currentUser = api.getCurrentUser();
+            if (currentUser) document.getElementById('userInfo').textContent = currentUser.name;
+            initFilters();
+            loadScores();
+        });
+
+        function logout() {
+            if (confirm('确认退出？')) {
+                authAPI.logout().catch(() => {}).finally(() => {
+                    localStorage.clear();
+                    window.location.href = '01-login.html';
+                });
+            }
+        }
+
+        // 初始化筛选器（动态加载周期和部门）
+        async function initFilters() {
+            // 加载考核周期
+            try {
+                const res = await api.get('/config/cycles');
+                cycles = res.data || [];
+                const cycleSelect = document.getElementById('cycleFilter');
+                cycleSelect.innerHTML = '<option value="">全部周期</option>' + cycles.map(c =>
+                    `<option value="${c.id}">${c.name || c.cycleMonth}</option>`
+                ).join('');
+            } catch (e) {
+                console.warn('加载考核周期失败:', e);
+            }
+            // 加载部门
+            try {
+                const res = await api.get('/depts');
+                departments = res.data || [];
+                const deptSelect = document.getElementById('deptFilter');
+                deptSelect.innerHTML = '<option value="">全部部门</option>' + departments.map(d =>
+                    `<option value="${d.name}">${d.name}</option>`
+                ).join('');
+            } catch (e) {
+                console.warn('加载部门失败:', e);
+            }
+        }
+
+        function onFilterChange() {
+            currentPageNum = 1;
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const cycle = document.getElementById('cycleFilter').value;
+            const dept = document.getElementById('deptFilter').value;
+            const grade = document.getElementById('gradeFilter').value;
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            let filtered = allScores;
+            if (cycle) filtered = filtered.filter(s => s.cycleId == cycle || s.cycleMonth === cycle);
+            if (dept) filtered = filtered.filter(s => s.deptName === dept || s.dept === dept);
+            if (grade) filtered = filtered.filter(s => s.grade === grade);
+            if (search) filtered = filtered.filter(s => (s.userName || s.name || '').toLowerCase().includes(search));
+            scores = filtered;
+            totalPageNum = Math.max(1, Math.ceil(scores.length / pageSize));
+            if (currentPageNum > totalPageNum) currentPageNum = totalPageNum;
+            renderTable();
+            renderPagination();
+        }
+
+        // 从后端加载成绩
+        async function loadScores() {
+            document.getElementById('loadingState').classList.remove('hidden');
+            document.getElementById('scoreTableBody').innerHTML = '';
+            document.getElementById('emptyState').classList.add('hidden');
+
+            try {
+                const cycle = document.getElementById('cycleFilter').value;
+                const params = {};
+                if (cycle) params.cycleId = cycle;
+                if (currentUser?.role !== 'admin') params.userId = currentUser?.id;
+                const res = await scoreAPI.getList(params);
+                allScores = res.data || [];
+                document.getElementById('loadingState').classList.add('hidden');
+                if (allScores.length === 0) {
+                    document.getElementById('emptyState').classList.remove('hidden');
+                    document.getElementById('paginationBar').style.display = 'none';
+                } else {
+                    document.getElementById('emptyState').classList.add('hidden');
+                    document.getElementById('paginationBar').style.display = 'flex';
+                }
+                applyFilters();
+                initTrendUserSelect();
+            } catch (e) {
+                console.error('加载成绩失败:', e);
+                document.getElementById('loadingState').classList.add('hidden');
+                document.getElementById('emptyState').classList.remove('hidden');
+                document.getElementById('emptyState').innerHTML = `
+                    <i class="fas fa-exclamation-triangle text-6xl text-orange-300 mb-4"></i>
+                    <p class="text-gray-500">加载失败：${e.message}</p>
+                `;
+                document.getElementById('paginationBar').style.display = 'none';
+            }
+        }
+
+        function renderTable() {
+            const start = (currentPageNum - 1) * pageSize;
+            const pageData = scores.slice(start, start + pageSize);
+            document.getElementById('totalCount').textContent = scores.length;
+            document.getElementById('scoreTableBody').innerHTML = pageData.map((s, i) => {
+                const gradeColor = s.grade === '优秀' ? 'green' : s.grade === '良好' ? 'blue' : s.grade === '合格' ? 'yellow' : 'red';
+                return `<tr class="hover:bg-gray-50">
+                    <td class="px-4 py-3 text-sm text-gray-900">${start + i + 1}</td>
+                    <td class="px-4 py-3 text-sm font-medium text-gray-900">${s.userName || s.name || '-'}</td>
+                    <td class="px-4 py-3 text-sm text-gray-500">${s.deptName || s.dept || '-'}</td>
+                    <td class="px-4 py-3 text-sm text-gray-500">${s.position || '-'}</td>
+                    <td class="px-4 py-3 text-sm text-center text-gray-500">${s.cycleName || s.cycleMonth || '-'}</td>
+                    <td class="px-4 py-3 text-sm text-center text-gray-500">${s.businessScore?.toFixed(1) ?? '-'}</td>
+                    <td class="px-4 py-3 text-sm text-center text-gray-500">${s.taskScore?.toFixed(1) ?? '-'}</td>
+                    <td class="px-4 py-3 text-sm text-center text-gray-500">${s.attitudeScore?.toFixed(1) ?? '-'}</td>
+                    <td class="px-4 py-3 text-sm text-center font-bold text-blue-600">${s.totalScore?.toFixed(1) ?? '-'}</td>
+                    <td class="px-4 py-3 text-sm text-center"><span class="px-2 py-1 bg-${gradeColor}-100 text-${gradeColor}-700 rounded text-sm">${s.grade || '-'}</span></td>
+                    <td class="px-4 py-3 text-sm text-center"><button onclick="showDetail(${s.id})" class="text-blue-600 hover:text-blue-900 font-medium"><i class="fas fa-eye mr-1"></i>详情</button></td>
+                </tr>`;
+            }).join('');
+        }
+
+        function renderPagination() {
+            document.getElementById('currentPage').textContent = currentPageNum;
+            document.getElementById('totalPages').textContent = totalPageNum;
+            // 页码按钮
+            const container = document.getElementById('pageButtons');
+            let html = '';
+            const maxVisible = 5;
+            let startPage = Math.max(1, currentPageNum - Math.floor(maxVisible / 2));
+            let endPage = Math.min(totalPageNum, startPage + maxVisible - 1);
+            if (endPage - startPage < maxVisible - 1) startPage = Math.max(1, endPage - maxVisible + 1);
+            for (let p = startPage; p <= endPage; p++) {
+                html += `<button onclick="goPage(${p})" class="px-3 py-1 rounded ${p === currentPageNum ? 'bg-blue-600 text-white' : 'border hover:bg-gray-50'}">${p}</button>`;
+            }
+            container.innerHTML = html;
+            // 首尾页按钮状态
+            document.getElementById('btnFirst').disabled = currentPageNum <= 1;
+            document.getElementById('btnPrev').disabled = currentPageNum <= 1;
+            document.getElementById('btnNext').disabled = currentPageNum >= totalPageNum;
+            document.getElementById('btnLast').disabled = currentPageNum >= totalPageNum;
+        }
+
+        function goPage(page) {
+            if (page < 1 || page > totalPageNum) return;
+            currentPageNum = page;
+            renderTable();
+            renderPagination();
+        }
+
+        // 快捷范围选择
+        function quickRange(months) {
+            const now = new Date();
+            if (months === 'all') {
+                document.getElementById('cycleFilter').value = '';
+            } else {
+                // 过滤近 N 个月的周期
+                const cutoff = new Date(now.getFullYear(), now.getMonth() - parseInt(months), 1);
+                const recentCycles = cycles.filter(c => {
+                    const d = new Date(c.cycleMonth || c.name);
+                    return d >= cutoff;
+                });
+                // 设置选中最后一个（最新）周期
+                if (recentCycles.length > 0) {
+                    document.getElementById('cycleFilter').value = recentCycles[recentCycles.length - 1].id;
+                }
+            }
+            onFilterChange();
+        }
+
+        function showDetail(id) {
+            const s = allScores.find(x => x.id === id);
+            if (!s) return;
+            document.getElementById('detailName').textContent = s.userName || s.name || '-';
+            document.getElementById('detailDept').textContent = s.deptName || s.dept || '-';
+            document.getElementById('detailMonth').textContent = s.cycleName || s.cycleMonth || '-';
+            document.getElementById('detailPosition').textContent = s.position || '-';
+            document.getElementById('detailBusiness').textContent = (s.businessScore?.toFixed(1) ?? '-') + '分';
+            document.getElementById('detailTask').textContent = (s.taskScore?.toFixed(1) ?? '-') + '分';
+            document.getElementById('detailAttitude').textContent = (s.attitudeScore?.toFixed(1) ?? '-') + '分';
+            document.getElementById('detailTotal').textContent = (s.totalScore?.toFixed(1) ?? '-') + '分';
+            document.getElementById('detailGrade').textContent = s.grade || '-';
+            const gc = s.grade === '优秀' ? 'green' : s.grade === '良好' ? 'blue' : 'yellow';
+            document.getElementById('detailGrade').className = `px-4 py-2 rounded-full text-sm font-medium bg-${gc}-100 text-${gc}-700`;
+            document.getElementById('detailModal').classList.remove('hidden');
+            document.getElementById('detailModal').classList.add('flex');
+        }
+
+        function hideDetailModal() {
+            document.getElementById('detailModal').classList.add('hidden');
+            document.getElementById('detailModal').classList.remove('flex');
+        }
+
+        // 导出成绩单
+        function exportScores() {
+            if (allScores.length === 0) { alert('暂无数据可导出'); return; }
+            // 构造 CSV
+            const headers = ['姓名', '部门', '岗位', '考核周期', '经营指标', '关键任务', '能力态度', '综合得分', '等级'];
+            const rows = scores.map(s => [
+                s.userName || s.name, s.deptName || s.dept, s.position, s.cycleName || s.cycleMonth,
+                s.businessScore?.toFixed(1), s.taskScore?.toFixed(1), s.attitudeScore?.toFixed(1),
+                s.totalScore?.toFixed(1), s.grade
+            ]);
+            let csv = '\uFEFF' + headers.join(',') + '\n';
+            rows.forEach(r => { csv += r.map(v => `"${v ?? ''}"`).join(',') + '\n'; });
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `成绩单_${new Date().toISOString().slice(0, 10)}.csv`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // 趋势图
+        function initTrendUserSelect() {
+            const select = document.getElementById('trendUserSelect');
+            const names = [...new Set(allScores.map(s => s.userName || s.name))].filter(Boolean);
+            select.innerHTML = '<option value="">-- 选择员工 --</option>' + names.map(n =>
+                `<option value="${n}">${n}</option>`
+            ).join('');
+        }
+
+        function renderTrend() {
+            const name = document.getElementById('trendUserSelect').value;
+            const chart = document.getElementById('trendChart');
+            if (!name) { chart.innerHTML = '<p class="text-gray-400 self-center">请选择员工查看趋势</p>'; return; }
+            const userScores = allScores.filter(s => (s.userName || s.name) === name).sort((a, b) => (a.cycleMonth || '').localeCompare(b.cycleMonth || ''));
+            if (userScores.length === 0) { chart.innerHTML = '<p class="text-gray-400 self-center">无数据</p>'; return; }
+            const maxScore = 100;
+            chart.innerHTML = userScores.map(s => {
+                const h = ((s.totalScore || 0) / maxScore) * 200;
+                const color = s.grade === '优秀' ? 'bg-green-500' : s.grade === '良好' ? 'bg-blue-500' : s.grade === '合格' ? 'bg-yellow-500' : 'bg-red-500';
+                return `<div class="flex flex-col items-center flex-1 min-w-12">
+                    <span class="text-xs font-medium text-gray-600 mb-1">${s.totalScore?.toFixed(1)}</span>
+                    <div class="${color} rounded-t w-full" style="height:${h}px;max-height:200px"></div>
+                    <span class="text-xs text-gray-500 mt-1 truncate w-full text-center">${s.cycleMonth || s.cycleName || '-'}</span>
+                    <span class="text-xs ${color.replace('bg-', 'text-')} mt-0.5">${s.grade || ''}</span>
+                </div>`;
+            }).join('');
+        }
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

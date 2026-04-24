@@ -4,136 +4,371 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>任务填报 - 华规绩效考评系统</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-gray-50 min-h-screen">
     <div class="flex h-screen">
-        <!-- 侧边栏 - 蓝色主题 -->
         <aside class="w-64 bg-blue-700 text-white flex-shrink-0">
-    <div class="p-4 mx-3 mb-2 mt-4"><img src="../images/huagui-logo.png?v=20260417" alt="华规软件" class="w-full h-auto"></div>
-    <nav class="mt-2">
-        <a href="02-workbench.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors">
-            <i class="fas fa-home w-6"></i>
-            <span>工作台</span>
-        </a>
-        <a href="03-task-submission.html" class="flex items-center px-6 py-3 bg-blue-600 border-l-4 border-white">
-            <i class="fas fa-edit w-6"></i>
-            <span>任务填报</span>
-        </a>
-        <a href="08-subordinate-evaluation.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors">
-            <i class="fas fa-users w-6"></i>
-            <span>下属考核</span>
-        </a>
-        <a href="07-report-analysis.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors">
-            <i class="fas fa-file-alt w-6"></i>
-            <span>报表中心</span>
-        </a>
-        <a href="06-admin-config.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors">
-            <i class="fas fa-cog w-6"></i>
-            <span>系统配置</span>
-        </a>
-        <a href="09-user-management.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors">
-            <i class="fas fa-user-cog w-6"></i>
-            <span>用户管理</span>
-        </a>
-        <a href="11-org-structure.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors">
-            <i class="fas fa-sitemap w-6"></i>
-            <span>组织关系</span>
-        </a>
-    </nav>
-
-    </nav>
-</aside>
-
-        <!-- 主内容区 -->
+            <div class="p-4 mx-3 mb-2 mt-4"><img src="../images/huagui-logo.png?v=20260417" alt="华规软件" class="w-full h-auto"></div>
+            <nav class="mt-2">
+                <a href="02-workbench.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-home w-6"></i><span>工作台</span></a>
+                <a href="03-task-submission.html" class="flex items-center px-6 py-3 bg-blue-600 border-l-4 border-white"><i class="fas fa-edit w-6"></i><span>任务填报</span></a>
+                <a href="04-task-review.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-tasks w-6"></i><span>任务审核</span></a>
+                <a href="05-performance-rating.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-star w-6"></i><span>考核打分</span></a>
+                <a href="05-score-query.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-chart-bar w-6"></i><span>成绩查询</span></a>
+                <a href="07-report-analysis.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-file-alt w-6"></i><span>报表中心</span></a>
+                <a href="06-admin-config.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-cog w-6"></i><span>系统配置</span></a>
+                <a href="10-user-management.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-user-cog w-6"></i><span>用户管理</span></a>
+                <a href="11-org-structure.html" class="flex items-center px-6 py-3 hover:bg-blue-600 transition-colors"><i class="fas fa-sitemap w-6"></i><span>组织关系</span></a>
+            </nav>
+        </aside>
         <div class="flex-1 flex flex-col overflow-hidden">
             <header class="bg-white shadow-sm border-b px-6 py-4">
                 <div class="flex justify-between items-center">
-                    <h2 class="text-2xl font-semibold text-gray-800">重点任务填报</h2>
+                    <h2 class="text-2xl font-semibold text-gray-800">任务填报</h2>
                     <div class="flex items-center space-x-4">
-                        <span class="text-gray-600">李晓明 - 高级软件工程师</span>
-                        <a href="01-login.html" class="text-gray-500 hover:text-red-600">
-                            <i class="fas fa-sign-out-alt"></i>
-                            <span class="ml-1">退出</span>
-                        </a>
+                        <span class="text-gray-600" id="userInfo">-</span>
+                        <button onclick="logout()" class="text-gray-500 hover:text-red-600"><i class="fas fa-sign-out-alt"></i><span class="ml-1">退出</span></button>
                     </div>
                 </div>
             </header>
-
             <main class="flex-1 overflow-y-auto p-6">
-                <div class="max-w-4xl mx-auto">
-                    <div class="bg-white rounded-lg shadow p-6 mb-6">
-                        <p class="text-gray-600">每月初填报本月重点任务，最多可添加 5 项</p>
-                    </div>
-
-                    <div class="bg-white rounded-lg shadow p-6 mb-6">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">考核周期</label>
-                        <select class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
-                            <option value="2026-04">2026 年 4 月</option>
-                            <option value="2026-05">2026 年 5 月</option>
-                        </select>
-                    </div>
-
-                    <div class="bg-white rounded-lg shadow p-6 mb-6">
-                        <h3 class="text-lg font-semibold text-gray-800 mb-4">添加新任务</h3>
-                        <div class="space-y-4">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">任务名称</label>
-                                <input type="text" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="请输入任务名称">
+                <div class="bg-white rounded-lg shadow p-6 mb-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-48">
+                                <label class="block text-sm font-medium text-gray-700 mb-1">考核月份</label>
+                                <select id="monthSelect" onchange="onCycleChange()" class="w-full border rounded-lg px-3 py-2">
+                                    <option value="">加载中...</option>
+                                </select>
                             </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">任务内容描述</label>
-                                <textarea rows="3" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="请详细描述任务内容"></textarea>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">交付成果</label>
-                                <input type="text" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="请输入预期交付成果">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">预计完成百分比：<span class="text-blue-600 font-bold">100%</span></label>
-                                <input type="range" min="1" max="100" value="100" class="w-full h-2 bg-gray-200 rounded-lg accent-blue-600">
-                            </div>
-                            <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
-                                <i class="fas fa-plus mr-2"></i>添加任务
-                            </button>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <button onclick="addTask()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg"><i class="fas fa-plus mr-1"></i>添加任务</button>
+                            <button onclick="saveDraft()" id="saveDraftBtn" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg"><i class="fas fa-save mr-1"></i>保存草稿</button>
+                            <button onclick="submitAll()" id="submitAllBtn" class="px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg"><i class="fas fa-paper-plane mr-1"></i>提交全部</button>
                         </div>
                     </div>
-
-                    <div class="bg-white rounded-lg shadow p-6 mb-6">
-                        <h3 class="text-lg font-semibold text-gray-800 mb-4">已添加任务 <span class="text-sm font-normal text-gray-500">(0/5)</span></h3>
-                        <p class="text-gray-400 text-center py-8">暂无任务，请添加</p>
+                    <!-- 加载状态 -->
+                    <div id="taskLoading" class="text-center py-8">
+                        <i class="fas fa-spinner fa-spin text-3xl text-blue-600 mb-2"></i>
+                        <p class="text-gray-500">加载任务中...</p>
                     </div>
-
-                    <div class="bg-white rounded-lg shadow p-6">
-                        <button class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition-colors">
-                            提交任务
-                        </button>
+                    <div class="mb-4 flex items-center justify-between">
+                        <div class="text-sm text-gray-600">
+                            共 <span id="taskCount" class="font-medium text-blue-600">0</span> 个任务，
+                            已完成 <span id="completedCount" class="font-medium text-green-600">0</span> 个
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            状态：<span id="overallStatus" class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded text-xs">草稿</span>
+                        </div>
                     </div>
+                    <div id="taskList" class="space-y-4"></div>
                 </div>
             </main>
         </div>
     </div>
+    <!-- 引入 API 封装 -->
+    <script src="../js/api.js"></script>
+    <script>
+        // 权限检查
+        if (!api.getToken()) { window.location.href = '01-login.html'; }
+
+        let tasks = [];
+        let cycles = [];
+        let currentCycleId = null;
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', async () => {
+            loadUserInfo();
+            await loadCycles();
+            await loadTasks();
+        });
+
+        function loadUserInfo() {
+            const user = api.getCurrentUser();
+            document.getElementById('userInfo').textContent = user?.name || '-';
+        }
+
+        function logout() {
+            if (confirm('确认退出？')) {
+                localStorage.clear();
+                window.location.href = '01-login.html';
+            }
+        }
+
+        // 加载考核周期
+        async function loadCycles() {
+            try {
+                const res = await cycleAPI.getList({ status: 1 });
+                cycles = res.data || [];
+                const select = document.getElementById('monthSelect');
+                if (cycles.length === 0) {
+                    select.innerHTML = '<option value="">暂无考核周期</option>';
+                    return;
+                }
+                select.innerHTML = cycles.map(c => {
+                    const label = `${c.cycleName || c.startDate}`;
+                    return `<option value="${c.id}" ${c.status === 1 ? 'selected' : ''}>${label}</option>`;
+                }).join('');
+                // 默认选中第一个
+                if (cycles.length > 0) {
+                    currentCycleId = cycles[0].id;
+                }
+            } catch (e) {
+                console.error('加载考核周期失败:', e);
+                document.getElementById('monthSelect').innerHTML = '<option value="">加载失败</option>';
+            }
+        }
+
+        // 切换考核周期
+        async function onCycleChange() {
+            const select = document.getElementById('monthSelect');
+            currentCycleId = select.value ? parseInt(select.value) : null;
+            await loadTasks();
+        }
+
+        // 加载任务列表
+        async function loadTasks() {
+            if (!currentCycleId) return;
+
+            const loadingEl = document.getElementById('taskLoading');
+            loadingEl.style.display = 'block';
+            document.getElementById('taskList').innerHTML = '';
+
+            try {
+                const user = api.getCurrentUser();
+                const res = await taskAPI.getList({ cycleId: currentCycleId, userId: user?.id });
+                tasks = res.data || [];
+                renderTasks();
+            } catch (e) {
+                console.error('加载任务失败:', e);
+                document.getElementById('taskList').innerHTML = `
+                    <div class="text-center py-8">
+                        <i class="fas fa-exclamation-triangle text-3xl text-red-400 mb-2"></i>
+                        <p class="text-gray-500">加载任务失败：${e.message}</p>
+                        <button onclick="loadTasks()" class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm">重新加载</button>
+                    </div>`;
+            } finally {
+                loadingEl.style.display = 'none';
+            }
+        }
+
+        // 渲染任务列表
+        function renderTasks() {
+            document.getElementById('taskCount').textContent = tasks.length;
+            document.getElementById('completedCount').textContent = tasks.filter(t => getCompletionRate(t) === 100).length;
+
+            if (tasks.length === 0) {
+                document.getElementById('taskList').innerHTML = `
+                    <div class="text-center py-12">
+                        <i class="fas fa-clipboard-list text-5xl text-gray-300 mb-4"></i>
+                        <p class="text-gray-500 text-lg">暂无任务，请点击「添加任务」开始填报</p>
+                    </div>`;
+                return;
+            }
+
+            // 更新总体状态
+            const hasPending = tasks.some(t => t.status === 1); // PENDING_REVIEW
+            const hasApproved = tasks.some(t => t.status === 2); // APPROVED
+            const statusEl = document.getElementById('overallStatus');
+            if (hasApproved) {
+                statusEl.className = 'px-2 py-1 bg-green-100 text-green-700 rounded text-xs';
+                statusEl.textContent = '已通过';
+            } else if (hasPending) {
+                statusEl.className = 'px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs';
+                statusEl.textContent = '待审核';
+            } else {
+                statusEl.className = 'px-2 py-1 bg-yellow-100 text-yellow-700 rounded text-xs';
+                statusEl.textContent = '草稿';
+            }
+
+            document.getElementById('taskList').innerHTML = tasks.map((t, idx) => {
+                const status = t.status;
+                const statusText = status === 2 ? '已通过' : status === 1 ? '待审核' : '草稿';
+                const statusClass = status === 2 ? 'bg-green-50 border-green-200' : status === 1 ? 'bg-blue-50 border-blue-200' : 'bg-white';
+                const badgeClass = status === 2 ? 'bg-green-100 text-green-700' : status === 1 ? 'bg-blue-100 text-blue-700' : 'bg-gray-100 text-gray-700';
+                const isDraft = status === 0; // DRAFT
+                const completionRate = getCompletionRate(t);
+                const selfScore = t.selfScore ?? 0;
+
+                return `
+                <div class="border rounded-lg p-4 ${statusClass}">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center space-x-3 flex-1">
+                            <span class="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-semibold">${idx + 1}</span>
+                            <input type="text" value="${escapeHtml(t.taskName || '')}" onchange="updateTask(${t.id}, 'taskName', this.value)" class="flex-1 font-semibold text-gray-800 border-b border-transparent hover:border-gray-300 focus:border-blue-500 focus:outline-none px-2 py-1" placeholder="任务名称" ${!isDraft ? 'readonly' : ''}>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="px-2 py-1 text-xs rounded ${badgeClass}">${statusText}</span>
+                            ${isDraft ? `<button onclick="deleteTask(${t.id})" class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button>` : ''}
+                        </div>
+                    </div>
+                    <div class="ml-11 space-y-3">
+                        <div>
+                            <label class="block text-xs font-medium text-gray-500 mb-1">任务内容</label>
+                            <textarea onchange="updateTask(${t.id}, 'taskDesc', this.value)" class="w-full border rounded-lg px-3 py-2 text-sm" rows="3" ${!isDraft ? 'readonly' : ''} placeholder="详细描述任务内容">${escapeHtml(t.taskDesc || '')}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-gray-500 mb-1">权重 (%)</label>
+                            <input type="number" min="0" max="100" value="${t.weight || 0}" onchange="updateTask(${t.id}, 'weight', parseFloat(this.value) || 0)" class="w-full border rounded-lg px-3 py-2 text-sm" ${!isDraft ? 'readonly' : ''} placeholder="任务权重百分比">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-gray-500 mb-1">完成百分比：<span class="font-semibold text-blue-600">${completionRate}%</span></label>
+                            <input type="range" min="0" max="100" value="${completionRate}" onchange="updateTask(${t.id}, 'selfScore', parseInt(this.value))" class="w-full" ${!isDraft ? 'disabled' : ''}>
+                        </div>
+                        ${completionRate < 100 && isDraft ? `<div><label class="block text-xs font-medium text-gray-500 mb-1">未达成原因</label><textarea onchange="updateTask(${t.id}, 'rejectReason', this.value)" class="w-full border rounded-lg px-3 py-2 text-sm" rows="2">${escapeHtml(t.rejectReason || '')}</textarea></div>` : ''}
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        function getCompletionRate(task) {
+            // selfScore 在实体中是 BigDecimal，这里当作 0-100 的完成率
+            return parseInt(task.selfScore || 0);
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // 添加新任务（本地暂存，保存时提交到后端）
+        function addTask() {
+            const newId = 'new_' + Date.now();
+            tasks.push({
+                id: newId,
+                userId: api.getCurrentUser()?.id,
+                cycleId: currentCycleId,
+                taskName: '',
+                taskDesc: '',
+                weight: 0,
+                selfScore: 0,
+                status: 0
+            });
+            renderTasks();
+        }
+
+        // 删除任务
+        async function deleteTask(id) {
+            if (!confirm('确认删除该任务吗？')) return;
+
+            // 如果是新任务（未保存），直接删除
+            if (String(id).startsWith('new_')) {
+                tasks = tasks.filter(t => t.id !== id);
+                renderTasks();
+                return;
+            }
+
+            try {
+                await taskAPI.delete(id);
+                tasks = tasks.filter(t => t.id !== id);
+                renderTasks();
+            } catch (e) {
+                alert('删除失败：' + e.message);
+            }
+        }
+
+        // 更新任务字段
+        function updateTask(id, field, value) {
+            const t = tasks.find(x => x.id === id);
+            if (t) t[field] = value;
+        }
+
+        // 校验任务
+        function validateTasks() {
+            for (let i = 0; i < tasks.length; i++) {
+                const t = tasks[i];
+                if (!t.taskName || !t.taskName.trim()) { alert(`第${i+1}个任务：请填写任务名称`); return false; }
+                if (!t.taskDesc || !t.taskDesc.trim()) { alert(`第${i+1}个任务：请填写任务内容`); return false; }
+            }
+            return true;
+        }
+
+        // 保存草稿
+        async function saveDraft() {
+            if (tasks.length === 0) { alert('请至少添加一个任务'); return; }
+            if (!validateTasks()) return;
+
+            const btn = document.getElementById('saveDraftBtn');
+            const originalText = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i>保存中...';
+
+            try {
+                for (const t of tasks) {
+                    const data = {
+                        userId: t.userId || api.getCurrentUser()?.id,
+                        cycleId: currentCycleId,
+                        taskName: t.taskName,
+                        taskDesc: t.taskDesc,
+                        weight: t.weight || 0,
+                        selfScore: t.selfScore || 0,
+                        status: 0 // DRAFT
+                    };
+
+                    if (String(t.id).startsWith('new_')) {
+                        // 新建
+                        await taskAPI.create(data);
+                    } else {
+                        // 更新
+                        await taskAPI.update(t.id, data);
+                    }
+                }
+                alert('草稿已保存！');
+                await loadTasks();
+            } catch (e) {
+                alert('保存失败：' + e.message);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+            }
+        }
+
+        // 提交全部
+        async function submitAll() {
+            if (tasks.length === 0) { alert('请至少添加一个任务'); return; }
+            if (!validateTasks()) return;
+            if (!confirm('确认提交所有任务吗？提交后将无法修改。')) return;
+
+            const btn = document.getElementById('submitAllBtn');
+            const originalText = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i>提交中...';
+
+            try {
+                // 先保存所有任务
+                for (const t of tasks) {
+                    const data = {
+                        userId: t.userId || api.getCurrentUser()?.id,
+                        cycleId: currentCycleId,
+                        taskName: t.taskName,
+                        taskDesc: t.taskDesc,
+                        weight: t.weight || 0,
+                        selfScore: t.selfScore || 0,
+                        status: 1 // PENDING_REVIEW
+                    };
+
+                    if (String(t.id).startsWith('new_')) {
+                        await taskAPI.create(data);
+                    } else {
+                        await taskAPI.update(t.id, data);
+                    }
+                }
+                alert('提交成功！等待审核。');
+                await loadTasks();
+            } catch (e) {
+                alert('提交失败：' + e.message);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+            }
+        }
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
